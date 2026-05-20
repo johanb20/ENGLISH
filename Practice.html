@@ -62,6 +62,7 @@
     <button class="mode-btn active" onclick="setMode('write')" id="mode-write">✏️ Escribe (ES→EN)</button>
     <button class="mode-btn" onclick="setMode('choice')" id="mode-choice">🔤 Opción múltiple</button>
     <button class="mode-btn" onclick="setMode('reverse')" id="mode-reverse">🔄 Inglés→Español</button>
+    <button class="mode-btn" onclick="setMode('tenses')" id="mode-tenses">⏳ Tiempos verbales</button>
   </div>
 
   <div class="section-label">Categoría</div>
@@ -81,6 +82,22 @@
       <button class="btn-check" onclick="checkAnswer()">Verificar</button>
     </div>
     <div class="choices" id="choices-area" style="display:none"></div>
+    <div id="tenses-area" style="width:100%; max-width:520px; flex-direction:column; gap:10px; display:none;">
+      <div style="font-size:13px; color:#555; margin-bottom:2px;">Escribe las 3 formas del verbo:</div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span style="font-size:12px; color:#888; min-width:115px; flex-shrink:0;">Base (infinitive)</span>
+        <input type="text" id="t-base" placeholder="base form..." autocomplete="off" onkeydown="handleTenseKey(event,0)" style="flex:1; font-size:15px; border:0.5px solid #ccc; border-radius:8px; padding:0 12px; height:40px; background:#fff; color:#1a1a18; outline:none;" />
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span style="font-size:12px; color:#888; min-width:115px; flex-shrink:0;">Simple past</span>
+        <input type="text" id="t-past" placeholder="simple past..." autocomplete="off" onkeydown="handleTenseKey(event,1)" style="flex:1; font-size:15px; border:0.5px solid #ccc; border-radius:8px; padding:0 12px; height:40px; background:#fff; color:#1a1a18; outline:none;" />
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span style="font-size:12px; color:#888; min-width:115px; flex-shrink:0;">Past participle</span>
+        <input type="text" id="t-pp" placeholder="past participle..." autocomplete="off" onkeydown="handleTenseKey(event,2)" style="flex:1; font-size:15px; border:0.5px solid #ccc; border-radius:8px; padding:0 12px; height:40px; background:#fff; color:#1a1a18; outline:none;" />
+      </div>
+      <button class="btn-check" onclick="checkTenses()" style="align-self:flex-start; padding:0 24px; height:40px;">Verificar</button>
+    </div>
     <div class="feedback hidden" id="feedback">
       <span id="feedback-text"></span>
       <button class="next-btn" onclick="nextCard()">Siguiente →</button>
@@ -282,115 +299,111 @@ const ALL_WORDS = [
   {es:"sala",en:"living room",emoji:"🛋️",cat:"Hogar"},
 
   // Verbos (60)
-  {es:"caminar",en:"walk",emoji:"🚶",cat:"Verbos"},
-  {es:"correr",en:"run",emoji:"🏃",cat:"Verbos"},
-  {es:"comer",en:"eat",emoji:"🍽️",cat:"Verbos"},
-  {es:"beber",en:"drink",emoji:"🥤",cat:"Verbos"},
-  {es:"dormir",en:"sleep",emoji:"😴",cat:"Verbos"},
-  {es:"hablar",en:"speak",emoji:"🗣️",cat:"Verbos"},
-  {es:"escuchar",en:"listen",emoji:"👂",cat:"Verbos"},
-  {es:"leer",en:"read",emoji:"📖",cat:"Verbos"},
-  {es:"escribir",en:"write",emoji:"✍️",cat:"Verbos"},
-  {es:"jugar",en:"play",emoji:"🎮",cat:"Verbos"},
-  {es:"trabajar",en:"work",emoji:"💼",cat:"Verbos"},
-  {es:"estudiar",en:"study",emoji:"📚",cat:"Verbos"},
-  {es:"cantar",en:"sing",emoji:"🎤",cat:"Verbos"},
-  {es:"bailar",en:"dance",emoji:"💃",cat:"Verbos"},
-  {es:"reír",en:"laugh",emoji:"😂",cat:"Verbos"},
-  {es:"llorar",en:"cry",emoji:"😢",cat:"Verbos"},
-  {es:"abrir",en:"open",emoji:"🔓",cat:"Verbos"},
-  {es:"cerrar",en:"close",emoji:"🔒",cat:"Verbos"},
-  {es:"comprar",en:"buy",emoji:"🛍️",cat:"Verbos"},
-  {es:"vender",en:"sell",emoji:"💰",cat:"Verbos"},
-  {es:"volar",en:"fly",emoji:"✈️",cat:"Verbos"},
-  {es:"nadar",en:"swim",emoji:"🏊",cat:"Verbos"},
-  {es:"saltar",en:"jump",emoji:"🦘",cat:"Verbos"},
-  {es:"caer",en:"fall",emoji:"🍂",cat:"Verbos"},
-  {es:"empujar",en:"push",emoji:"🤜",cat:"Verbos"},
-  {es:"jalar",en:"pull",emoji:"🤛",cat:"Verbos"},
-  {es:"llevar",en:"carry",emoji:"🎒",cat:"Verbos"},
-  {es:"dar",en:"give",emoji:"🎁",cat:"Verbos"},
-  {es:"tomar",en:"take",emoji:"✋",cat:"Verbos"},
-  {es:"encontrar",en:"find",emoji:"🔍",cat:"Verbos"},
-  {es:"perder",en:"lose",emoji:"😓",cat:"Verbos"},
-  {es:"ganar",en:"win",emoji:"🏆",cat:"Verbos"},
-  {es:"ayudar",en:"help",emoji:"🤝",cat:"Verbos"},
-  {es:"pedir",en:"ask",emoji:"🙋",cat:"Verbos"},
-  {es:"responder",en:"answer",emoji:"💬",cat:"Verbos"},
-  {es:"pensar",en:"think",emoji:"🤔",cat:"Verbos"},
-  {es:"saber",en:"know",emoji:"🧠",cat:"Verbos"},
-  {es:"entender",en:"understand",emoji:"💡",cat:"Verbos"},
-  {es:"recordar",en:"remember",emoji:"🧠",cat:"Verbos"},
-  {es:"olvidar",en:"forget",emoji:"😶",cat:"Verbos"},
-  {es:"amar",en:"love",emoji:"❤️",cat:"Verbos"},
-  {es:"odiar",en:"hate",emoji:"💔",cat:"Verbos"},
-  {es:"querer",en:"want",emoji:"⭐",cat:"Verbos"},
-  {es:"necesitar",en:"need",emoji:"❗",cat:"Verbos"},
-  {es:"poder",en:"can",emoji:"💪",cat:"Verbos"},
-  {es:"deber",en:"must",emoji:"⚠️",cat:"Verbos"},
-  {es:"llegar",en:"arrive",emoji:"🏁",cat:"Verbos"},
-  {es:"salir",en:"leave",emoji:"🚪",cat:"Verbos"},
-  {es:"volver",en:"return",emoji:"🔄",cat:"Verbos"},
-  {es:"visitar",en:"visit",emoji:"🗺️",cat:"Verbos"},
-  {es:"llamar",en:"call",emoji:"📞",cat:"Verbos"},
-  {es:"esperar",en:"wait",emoji:"⏳",cat:"Verbos"},
-  {es:"cocinar",en:"cook",emoji:"🍳",cat:"Verbos"},
-  {es:"limpiar",en:"clean",emoji:"🧹",cat:"Verbos"},
-  {es:"construir",en:"build",emoji:"🏗️",cat:"Verbos"},
-  {es:"romper",en:"break",emoji:"💥",cat:"Verbos"},
-  {es:"reparar",en:"repair",emoji:"🔧",cat:"Verbos"},
-  {es:"enseñar",en:"teach",emoji:"👩‍🏫",cat:"Verbos"},
-  {es:"aprender",en:"learn",emoji:"📖",cat:"Verbos"},
-  {es:"mostrar",en:"show",emoji:"👀",cat:"Verbos"},
-
-  // Verbos irregulares comunes (25)
-  {es:"ir",en:"go",emoji:"🚶",cat:"Verbos 2"},
-  {es:"venir",en:"come",emoji:"👋",cat:"Verbos 2"},
-  {es:"ver",en:"see",emoji:"👀",cat:"Verbos 2"},
-  {es:"decir",en:"say",emoji:"💬",cat:"Verbos 2"},
-  {es:"hacer",en:"do / make",emoji:"🛠️",cat:"Verbos 2"},
-  {es:"tener",en:"have",emoji:"✋",cat:"Verbos 2"},
-  {es:"ser / estar",en:"be",emoji:"🌟",cat:"Verbos 2"},
-  {es:"poner",en:"put",emoji:"📦",cat:"Verbos 2"},
-  {es:"traer",en:"bring",emoji:"🎒",cat:"Verbos 2"},
-  {es:"valer",en:"cost",emoji:"💲",cat:"Verbos 2"},
-  {es:"empezar",en:"start",emoji:"▶️",cat:"Verbos 2"},
-  {es:"terminar",en:"finish",emoji:"🏁",cat:"Verbos 2"},
-  {es:"intentar",en:"try",emoji:"💪",cat:"Verbos 2"},
-  {es:"conseguir",en:"get",emoji:"✅",cat:"Verbos 2"},
-  {es:"dejar",en:"let / leave",emoji:"🚪",cat:"Verbos 2"},
-  {es:"seguir",en:"follow",emoji:"➡️",cat:"Verbos 2"},
-  {es:"cambiar",en:"change",emoji:"🔄",cat:"Verbos 2"},
-  {es:"crecer",en:"grow",emoji:"🌱",cat:"Verbos 2"},
-  {es:"sentir",en:"feel",emoji:"❤️",cat:"Verbos 2"},
-  {es:"parecer",en:"seem",emoji:"🤔",cat:"Verbos 2"},
-  {es:"existir",en:"exist",emoji:"🌍",cat:"Verbos 2"},
-  {es:"suceder",en:"happen",emoji:"⚡",cat:"Verbos 2"},
-  {es:"depender",en:"depend",emoji:"🔗",cat:"Verbos 2"},
-  {es:"incluir",en:"include",emoji:"➕",cat:"Verbos 2"},
-  {es:"crear",en:"create",emoji:"✨",cat:"Verbos 2"},
-
-  // Acciones dhogar (20)
-  {es:"barrer",en:"sweep",emoji:"🧹",cat:"Acciones"},
-  {es:"fregar",en:"mop",emoji:"🧹",cat:"Acciones"},
-  {es:"lavar",en:"wash",emoji:"🧼",cat:"Acciones"},
-  {es:"secar",en:"dry",emoji:"☀️",cat:"Acciones"},
-  {es:"planchar",en:"iron",emoji:"👕",cat:"Acciones"},
-  {es:"doblar",en:"fold",emoji:"📄",cat:"Acciones"},
-  {es:"ordenar",en:"tidy",emoji:"🗂️",cat:"Acciones"},
-  {es:"tirar",en:"throw",emoji:"🗑️",cat:"Acciones"},
-  {es:"reciclar",en:"recycle",emoji:"♻️",cat:"Acciones"},
-  {es:"pagar",en:"pay",emoji:"💳",cat:"Acciones"},
-  {es:"depositar",en:"deposit",emoji:"🏦",cat:"Acciones"},
-  {es:"firmar",en:"sign",emoji:"✍️",cat:"Acciones"},
-  {es:"imprimir",en:"print",emoji:"🖨️",cat:"Acciones"},
-  {es:"escanear",en:"scan",emoji:"📲",cat:"Acciones"},
-  {es:"copiar",en:"copy",emoji:"📋",cat:"Acciones"},
-  {es:"borrar",en:"delete",emoji:"🗑️",cat:"Acciones"},
-  {es:"guardar",en:"save",emoji:"💾",cat:"Acciones"},
-  {es:"compartir",en:"share",emoji:"📤",cat:"Acciones"},
-  {es:"descargar",en:"download",emoji:"⬇️",cat:"Acciones"},
-  {es:"subir",en:"upload",emoji:"⬆️",cat:"Acciones"},
+  {es:"caminar",en:"walk",past:"walked",pp:"walked",emoji:"🚶",cat:"Verbos"},
+  {es:"correr",en:"run",past:"ran",pp:"run",emoji:"🏃",cat:"Verbos"},
+  {es:"comer",en:"eat",past:"ate",pp:"eaten",emoji:"🍽️",cat:"Verbos"},
+  {es:"beber",en:"drink",past:"drank",pp:"drunk",emoji:"🥤",cat:"Verbos"},
+  {es:"dormir",en:"sleep",past:"slept",pp:"slept",emoji:"😴",cat:"Verbos"},
+  {es:"hablar",en:"speak",past:"spoke",pp:"spoken",emoji:"🗣️",cat:"Verbos"},
+  {es:"escuchar",en:"listen",past:"listened",pp:"listened",emoji:"👂",cat:"Verbos"},
+  {es:"leer",en:"read",past:"read",pp:"read",emoji:"📖",cat:"Verbos"},
+  {es:"escribir",en:"write",past:"wrote",pp:"written",emoji:"✍️",cat:"Verbos"},
+  {es:"jugar",en:"play",past:"played",pp:"played",emoji:"🎮",cat:"Verbos"},
+  {es:"trabajar",en:"work",past:"worked",pp:"worked",emoji:"💼",cat:"Verbos"},
+  {es:"estudiar",en:"study",past:"studied",pp:"studied",emoji:"📚",cat:"Verbos"},
+  {es:"cantar",en:"sing",past:"sang",pp:"sung",emoji:"🎤",cat:"Verbos"},
+  {es:"bailar",en:"dance",past:"danced",pp:"danced",emoji:"💃",cat:"Verbos"},
+  {es:"reír",en:"laugh",past:"laughed",pp:"laughed",emoji:"😂",cat:"Verbos"},
+  {es:"llorar",en:"cry",past:"cried",pp:"cried",emoji:"😢",cat:"Verbos"},
+  {es:"abrir",en:"open",past:"opened",pp:"opened",emoji:"🔓",cat:"Verbos"},
+  {es:"cerrar",en:"close",past:"closed",pp:"closed",emoji:"🔒",cat:"Verbos"},
+  {es:"comprar",en:"buy",past:"bought",pp:"bought",emoji:"🛍️",cat:"Verbos"},
+  {es:"vender",en:"sell",past:"sold",pp:"sold",emoji:"💰",cat:"Verbos"},
+  {es:"volar",en:"fly",past:"flew",pp:"flown",emoji:"✈️",cat:"Verbos"},
+  {es:"nadar",en:"swim",past:"swam",pp:"swum",emoji:"🏊",cat:"Verbos"},
+  {es:"saltar",en:"jump",past:"jumped",pp:"jumped",emoji:"🦘",cat:"Verbos"},
+  {es:"caer",en:"fall",past:"fell",pp:"fallen",emoji:"🍂",cat:"Verbos"},
+  {es:"empujar",en:"push",past:"pushed",pp:"pushed",emoji:"🤜",cat:"Verbos"},
+  {es:"jalar",en:"pull",past:"pulled",pp:"pulled",emoji:"🤛",cat:"Verbos"},
+  {es:"llevar",en:"carry",past:"carried",pp:"carried",emoji:"🎒",cat:"Verbos"},
+  {es:"dar",en:"give",past:"gave",pp:"given",emoji:"🎁",cat:"Verbos"},
+  {es:"tomar",en:"take",past:"took",pp:"taken",emoji:"✋",cat:"Verbos"},
+  {es:"encontrar",en:"find",past:"found",pp:"found",emoji:"🔍",cat:"Verbos"},
+  {es:"perder",en:"lose",past:"lost",pp:"lost",emoji:"😓",cat:"Verbos"},
+  {es:"ganar",en:"win",past:"won",pp:"won",emoji:"🏆",cat:"Verbos"},
+  {es:"ayudar",en:"help",past:"helped",pp:"helped",emoji:"🤝",cat:"Verbos"},
+  {es:"pedir",en:"ask",past:"asked",pp:"asked",emoji:"🙋",cat:"Verbos"},
+  {es:"responder",en:"answer",past:"answered",pp:"answered",emoji:"💬",cat:"Verbos"},
+  {es:"pensar",en:"think",past:"thought",pp:"thought",emoji:"🤔",cat:"Verbos"},
+  {es:"saber",en:"know",past:"knew",pp:"known",emoji:"🧠",cat:"Verbos"},
+  {es:"entender",en:"understand",past:"understood",pp:"understood",emoji:"💡",cat:"Verbos"},
+  {es:"recordar",en:"remember",past:"remembered",pp:"remembered",emoji:"🧠",cat:"Verbos"},
+  {es:"olvidar",en:"forget",past:"forgot",pp:"forgotten",emoji:"😶",cat:"Verbos"},
+  {es:"amar",en:"love",past:"loved",pp:"loved",emoji:"❤️",cat:"Verbos"},
+  {es:"odiar",en:"hate",past:"hated",pp:"hated",emoji:"💔",cat:"Verbos"},
+  {es:"querer",en:"want",past:"wanted",pp:"wanted",emoji:"⭐",cat:"Verbos"},
+  {es:"necesitar",en:"need",past:"needed",pp:"needed",emoji:"❗",cat:"Verbos"},
+  {es:"poder",en:"can",past:"could",pp:"been able to",emoji:"💪",cat:"Verbos"},
+  {es:"deber",en:"must",past:"had to",pp:"had to",emoji:"⚠️",cat:"Verbos"},
+  {es:"llegar",en:"arrive",past:"arrived",pp:"arrived",emoji:"🏁",cat:"Verbos"},
+  {es:"salir",en:"leave",past:"left",pp:"left",emoji:"🚪",cat:"Verbos"},
+  {es:"volver",en:"return",past:"returned",pp:"returned",emoji:"🔄",cat:"Verbos"},
+  {es:"visitar",en:"visit",past:"visited",pp:"visited",emoji:"🗺️",cat:"Verbos"},
+  {es:"llamar",en:"call",past:"called",pp:"called",emoji:"📞",cat:"Verbos"},
+  {es:"esperar",en:"wait",past:"waited",pp:"waited",emoji:"⏳",cat:"Verbos"},
+  {es:"cocinar",en:"cook",past:"cooked",pp:"cooked",emoji:"🍳",cat:"Verbos"},
+  {es:"limpiar",en:"clean",past:"cleaned",pp:"cleaned",emoji:"🧹",cat:"Verbos"},
+  {es:"construir",en:"build",past:"built",pp:"built",emoji:"🏗️",cat:"Verbos"},
+  {es:"romper",en:"break",past:"broke",pp:"broken",emoji:"💥",cat:"Verbos"},
+  {es:"reparar",en:"repair",past:"repaired",pp:"repaired",emoji:"🔧",cat:"Verbos"},
+  {es:"enseñar",en:"teach",past:"taught",pp:"taught",emoji:"👩‍🏫",cat:"Verbos"},
+  {es:"aprender",en:"learn",past:"learned",pp:"learned",emoji:"📖",cat:"Verbos"},
+  {es:"mostrar",en:"show",past:"showed",pp:"shown",emoji:"👀",cat:"Verbos"},
+  {es:"ir",en:"go",past:"went",pp:"gone",emoji:"🚶",cat:"Verbos"},
+  {es:"venir",en:"come",past:"came",pp:"come",emoji:"👋",cat:"Verbos"},
+  {es:"ver",en:"see",past:"saw",pp:"seen",emoji:"👀",cat:"Verbos"},
+  {es:"decir",en:"say",past:"said",pp:"said",emoji:"💬",cat:"Verbos"},
+  {es:"hacer",en:"do / make",past:"did / made",pp:"done / made",emoji:"🛠️",cat:"Verbos"},
+  {es:"tener",en:"have",past:"had",pp:"had",emoji:"✋",cat:"Verbos"},
+  {es:"ser / estar",en:"be",past:"was / were",pp:"been",emoji:"🌟",cat:"Verbos"},
+  {es:"poner",en:"put",past:"put",pp:"put",emoji:"📦",cat:"Verbos"},
+  {es:"traer",en:"bring",past:"brought",pp:"brought",emoji:"🎒",cat:"Verbos"},
+  {es:"valer",en:"cost",past:"cost",pp:"cost",emoji:"💲",cat:"Verbos"},
+  {es:"empezar",en:"start",past:"started",pp:"started",emoji:"▶️",cat:"Verbos"},
+  {es:"terminar",en:"finish",past:"finished",pp:"finished",emoji:"🏁",cat:"Verbos"},
+  {es:"intentar",en:"try",past:"tried",pp:"tried",emoji:"💪",cat:"Verbos"},
+  {es:"conseguir",en:"get",past:"got",pp:"gotten",emoji:"✅",cat:"Verbos"},
+  {es:"dejar",en:"let / leave",past:"let",pp:"let",emoji:"🚪",cat:"Verbos"},
+  {es:"seguir",en:"follow",past:"followed",pp:"followed",emoji:"➡️",cat:"Verbos"},
+  {es:"cambiar",en:"change",past:"changed",pp:"changed",emoji:"🔄",cat:"Verbos"},
+  {es:"crecer",en:"grow",past:"grew",pp:"grown",emoji:"🌱",cat:"Verbos"},
+  {es:"sentir",en:"feel",past:"felt",pp:"felt",emoji:"❤️",cat:"Verbos"},
+  {es:"parecer",en:"seem",past:"seemed",pp:"seemed",emoji:"🤔",cat:"Verbos"},
+  {es:"existir",en:"exist",past:"existed",pp:"existed",emoji:"🌍",cat:"Verbos"},
+  {es:"suceder",en:"happen",past:"happened",pp:"happened",emoji:"⚡",cat:"Verbos"},
+  {es:"depender",en:"depend",past:"depended",pp:"depended",emoji:"🔗",cat:"Verbos"},
+  {es:"incluir",en:"include",past:"included",pp:"included",emoji:"➕",cat:"Verbos"},
+  {es:"crear",en:"create",past:"created",pp:"created",emoji:"✨",cat:"Verbos"},
+  {es:"barrer",en:"sweep",past:"swept",pp:"swept",emoji:"🧹",cat:"Verbos"},
+  {es:"fregar",en:"mop",past:"mopped",pp:"mopped",emoji:"🧹",cat:"Verbos"},
+  {es:"lavar",en:"wash",past:"washed",pp:"washed",emoji:"🧼",cat:"Verbos"},
+  {es:"secar",en:"dry",past:"dried",pp:"dried",emoji:"☀️",cat:"Verbos"},
+  {es:"planchar",en:"iron",past:"ironed",pp:"ironed",emoji:"👕",cat:"Verbos"},
+  {es:"doblar",en:"fold",past:"folded",pp:"folded",emoji:"📄",cat:"Verbos"},
+  {es:"ordenar",en:"tidy",past:"tidied",pp:"tidied",emoji:"🗂️",cat:"Verbos"},
+  {es:"tirar",en:"throw",past:"threw",pp:"thrown",emoji:"🗑️",cat:"Verbos"},
+  {es:"reciclar",en:"recycle",past:"recycled",pp:"recycled",emoji:"♻️",cat:"Verbos"},
+  {es:"pagar",en:"pay",past:"paid",pp:"paid",emoji:"💳",cat:"Verbos"},
+  {es:"depositar",en:"deposit",past:"deposited",pp:"deposited",emoji:"🏦",cat:"Verbos"},
+  {es:"firmar",en:"sign",past:"signed",pp:"signed",emoji:"✍️",cat:"Verbos"},
+  {es:"imprimir",en:"print",past:"printed",pp:"printed",emoji:"🖨️",cat:"Verbos"},
+  {es:"escanear",en:"scan",past:"scanned",pp:"scanned",emoji:"📲",cat:"Verbos"},
+  {es:"copiar",en:"copy",past:"copied",pp:"copied",emoji:"📋",cat:"Verbos"},
+  {es:"borrar",en:"delete",past:"deleted",pp:"deleted",emoji:"🗑️",cat:"Verbos"},
+  {es:"guardar",en:"save",past:"saved",pp:"saved",emoji:"💾",cat:"Verbos"},
+  {es:"compartir",en:"share",past:"shared",pp:"shared",emoji:"📤",cat:"Verbos"},
+  {es:"descargar",en:"download",past:"downloaded",pp:"downloaded",emoji:"⬇️",cat:"Verbos"},
+  {es:"subir",en:"upload",past:"uploaded",pp:"uploaded",emoji:"⬆️",cat:"Verbos"},
 
   // Transporte (20)
   {es:"carro",en:"car",emoji:"🚗",cat:"Transporte"},
@@ -1193,11 +1206,7 @@ let seen = 0;
 
 document.getElementById('total-count').textContent = ALL_WORDS.length;
 
-function buildDeck() {
-  deck = ALL_WORDS.filter(w => activeCat === "Todas" || w.cat === activeCat);
-  shuffle(deck);
-  seen = 0;
-}
+
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -1210,6 +1219,15 @@ function setMode(m) {
   mode = m;
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('mode-' + m).classList.add('active');
+  // In tenses mode, only show verbs that have past/pp
+  if (m === 'tenses') {
+    const verbsWithTenses = ALL_WORDS.filter(w => w.past && (activeCat === 'Todas' || w.cat === activeCat));
+    if (verbsWithTenses.length === 0) {
+      // If current category has no verbs, switch to Todas
+      activeCat = 'Todas';
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'Todas'));
+    }
+  }
   buildDeck();
   showCard();
 }
@@ -1221,39 +1239,67 @@ function setCat(c) {
   showCard();
 }
 
+function buildDeck() {
+  let pool = ALL_WORDS.filter(w => activeCat === 'Todas' || w.cat === activeCat);
+  if (mode === 'tenses') pool = pool.filter(w => w.past);
+  deck = pool;
+  shuffle(deck);
+  seen = 0;
+}
+
 function showCard() {
   if (deck.length === 0) buildDeck();
+  if (deck.length === 0) return;
   current = deck[seen % deck.length];
   seen++;
   answered = false;
 
   document.getElementById('card-emoji').textContent = current.emoji;
-  document.getElementById('card-cat').textContent = current.cat;
-  
-  const isReverse = mode === 'reverse';
-  document.getElementById('card-word').textContent = isReverse ? current.en : current.es;
-  document.getElementById('card-hint').textContent = isReverse
-    ? 'Traduce al español'
-    : (mode === 'write' ? 'Escribe traducción en inglés' : 'Elige traducción en inglés');
 
+  const writeArea  = document.getElementById('write-area');
+  const choicesArea = document.getElementById('choices-area');
+  const tensesArea  = document.getElementById('tenses-area');
   const fb = document.getElementById('feedback');
   fb.className = 'feedback hidden';
 
-  const writeArea = document.getElementById('write-area');
-  const choicesArea = document.getElementById('choices-area');
-
-  if (mode === 'write' || mode === 'reverse') {
-    writeArea.style.display = 'flex';
+  if (mode === 'tenses') {
+    // Show Spanish verb, ask for base / simple past / past participle
+    document.getElementById('card-cat').textContent = current.cat + ' — Tiempos verbales';
+    document.getElementById('card-word').textContent = current.es;
+    document.getElementById('card-hint').textContent = '¿Cuáles son las 3 formas en inglés?';
+    writeArea.style.display   = 'none';
     choicesArea.style.display = 'none';
-    const inp = document.getElementById('answer-input');
-    inp.value = '';
-    inp.className = '';
-    inp.disabled = false;
-    setTimeout(() => inp.focus(), 50);
+    tensesArea.style.display  = 'flex';
+    ['t-base','t-past','t-pp'].forEach(id => {
+      const inp = document.getElementById(id);
+      inp.value = '';
+      inp.style.borderColor = '#ccc';
+      inp.style.background  = '#fff';
+      inp.style.color       = '#1a1a18';
+      inp.disabled = false;
+    });
+    setTimeout(() => document.getElementById('t-base').focus(), 50);
+
   } else {
-    writeArea.style.display = 'none';
-    choicesArea.style.display = 'grid';
-    buildChoices();
+    tensesArea.style.display = 'none';
+    const isReverse = mode === 'reverse';
+    document.getElementById('card-cat').textContent  = current.cat;
+    document.getElementById('card-word').textContent = isReverse ? current.en : current.es;
+    document.getElementById('card-hint').textContent = isReverse
+      ? 'Traduce al español'
+      : (mode === 'write' ? 'Escribe traducción en inglés' : 'Elige traducción en inglés');
+
+    if (mode === 'write' || mode === 'reverse') {
+      writeArea.style.display   = 'flex';
+      choicesArea.style.display = 'none';
+      const inp = document.getElementById('answer-input');
+      inp.value = ''; inp.className = ''; inp.disabled = false;
+      setTimeout(() => inp.focus(), 50);
+    } else {
+      writeArea.style.display   = 'none';
+      choicesArea.style.display = 'grid';
+      buildChoices();
+    }
   }
 
   const pct = Math.min(100, Math.round((seen / Math.max(1, deck.length)) * 100));
@@ -1308,6 +1354,50 @@ function checkAnswer() {
   inp.disabled = true;
   updateScore(isRight);
   showFeedback(isRight, correctVal);
+}
+
+function checkTenses() {
+  if (answered) { nextCard(); return; }
+  answered = true;
+  const fields = [
+    { id: 't-base', correct: current.en },
+    { id: 't-past', correct: current.past },
+    { id: 't-pp',   correct: current.pp }
+  ];
+  let allRight = true;
+  fields.forEach(f => {
+    const inp = document.getElementById(f.id);
+    const ok = normalize(inp.value) === normalize(f.correct);
+    if (!ok) allRight = false;
+    inp.style.borderColor = ok ? '#1D9E75' : '#D85A30';
+    inp.style.background  = ok ? '#E1F5EE' : '#FAECE7';
+    inp.style.color       = ok ? '#085041'  : '#4A1B0C';
+    inp.disabled = true;
+  });
+  updateScore(allRight);
+  // Show full answer in feedback
+  const fb = document.getElementById('feedback');
+  const ft = document.getElementById('feedback-text');
+  if (allRight) {
+    fb.className = 'feedback correct';
+    const msgs = ['Excelente! 🎉', 'Correcto! ✅', 'Muy bien! 👏', 'Perfecto! 🌟', 'Genial! 💪'];
+    ft.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  } else {
+    fb.className = 'feedback wrong';
+    ft.textContent = current.en + ' → ' + current.past + ' → ' + current.pp;
+  }
+}
+
+function handleTenseKey(e, fieldIndex) {
+  if (e.key === 'Enter') {
+    if (answered) { nextCard(); return; }
+    const ids = ['t-base','t-past','t-pp'];
+    if (fieldIndex < ids.length - 1) {
+      document.getElementById(ids[fieldIndex + 1]).focus();
+    } else {
+      checkTenses();
+    }
+  }
 }
 
 function updateScore(isRight) {
