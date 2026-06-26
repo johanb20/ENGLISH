@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+    <title>English B1</title>
+    <link rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪴</text></svg>">
+  </head>
+  <body>
+    <!-- BOTÓN FLOTANTE DEL MENÚ PRINCIPAL (el que ya tienes) -->
+    <div class="menu-floating-btn" onclick="toggleMenu()">
+      <span class="menu-icon">☰</span>
+      <span class="menu-text">MENU</span>
+    </div>
+
+    <!-- OVERLAY DEL MENÚ PRINCIPAL -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- PANEL DEL MENÚ PRINCIPAL -->
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-header">
+        <h3>📚 Navigation</h3>
+        <button
+          class="menu-close"
+          onclick="closeMenu()"
+          aria-label="Cerrar menú"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="menu-links">
+        <a href="../index.html" class="menu-link">
+          <span class="menu-link-icon">🏠</span>
+          <span>Home</span>
+        </a>
+        <a href="A1.html" class="menu-link">
+          <span class="menu-link-icon">🌱</span>
+          <span>A1 Level</span>
+        </a>
+        <a href="A2.html" class="menu-link active">
+          <span class="menu-link-icon">🌿</span>
+          <span>A2 Level</span>
+        </a>
+        <a href="B1.html" class="menu-link active">
+          <span class="menu-link-icon">🪴</span>
+          <span>B1 Level</span>
+        </a>
+        <a href="B2.html" class="menu-link active">
+          <span class="menu-link-icon">🌳</span>
+          <span>B2 Level</span>
+        </a>
+        <a href="C1.html" class="menu-link active">
+          <span class="menu-link-icon">🌲</span>
+          <span>C1 Level</span>
+        </a>
+        <a href="Grammar.html" class="menu-link">
+          <span class="menu-link-icon">🔤</span>
+          <span>Grammar</span>
+        </a>
+        <a href="Vocabulary.html" class="menu-link">
+          <span class="menu-link-icon">📖</span>
+          <span>Vocabulary</span>
+        </a>
+        <a href="Practice.html" class="menu-link">
+          <span class="menu-link-icon">✍️</span>
+          <span>Practice Vocabulary</span>
+        </a>
+        <a href="Summary.html" class="menu-link">
+          <span class="menu-link-icon">📝</span>
+          <span>Units Summary</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- NUEVO: Botón para abrir el menú de Unites -->
+    <div class="units-floating-btn" onclick="toggleUnitsMenu()">
+      <span class="units-icon">📋</span>
+      <span class="units-text">UNITS</span>
+    </div>
+
+    <!-- NUEVO: Overlay para el menú de Unites -->
+    <div
+      class="units-overlay"
+      id="unitsOverlay"
+      onclick="closeUnitsMenu()"
+    ></div>
+
+    <!-- NUEVO: Panel lateral de Unites -->
+    <div class="units-panel" id="unitsPanel">
+      <div class="units-panel-header">
+        <h3>📚 Units B1</h3>
+        <button class="units-close" onclick="closeUnitsMenu()">✕</button>
+      </div>
+      <div class="units-list">
+        <!-- Cada Unit es un enlace que carga su contenido -->
+        <a href="#" class="unit-link active" data-unit="unit1"
+          >🌍 Unit 1: Where are you from?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit2"
+          >💼 Unit 2: What do you do?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit3"
+          >💲 Unit 3: How much are these?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit4"
+          >🎸 Unit 4: Do you play the guitar?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit5"
+          >👨‍👩‍👧‍👦 Unit 5: What an interesting family!</a
+        >
+        <a href="#" class="unit-link" data-unit="unit6"
+          >🏃‍♂️ Unit 6: How often do you run?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit7"
+          >🕺 Unit 7: We went dancing!</a
+        >
+        <a href="#" class="unit-link" data-unit="unit8"
+          >🏘️ Unit 8: How’s the neighborhood?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit9"
+          >👓 Unit 9: What does she look like?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit10"
+          >✈️ Unit 10: Have you ever been there?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit11"
+          >🌆 Unit 11: It's a really nice city.</a
+        >
+        <a href="#" class="unit-link" data-unit="unit12"
+          >🛌 Unit 12: It's important to get rest.</a
+        >
+        <a href="#" class="unit-link" data-unit="unit13"
+          >🍽️ Unit 13: What would you like?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit14"
+          >❄️ Unit 14: It's the coldest city!</a
+        >
+        <a href="#" class="unit-link" data-unit="unit15"
+          >🕒 Unit 15: What are you doing later?</a
+        >
+        <a href="#" class="unit-link" data-unit="unit16"
+          >🔄 Unit 16: How have you changed?</a
+        >
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div id="unit1" class="unit-container active">
+        <div class="background">
+          <h1>🌍 Unit 1: Where are you from?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit2" class="unit-container">
+        <div class="background">
+          <h1>💼 Unit 2: What do you do?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit3" class="unit-container">
+        <div class="background">
+          <h1>💲 Unit 3: How much are these?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit4" class="unit-container">
+        <div class="background">
+          <h1>🎸 Unit 4: Do you play the guitar?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit5" class="unit-container">
+        <div class="background">
+          <h1>👨‍👩‍👧‍👦 Unit 5: What an interesting family!</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit6" class="unit-container">
+        <div class="background">
+          <h1>🏃‍♂️ Unit 6: How often do you run?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit7" class="unit-container">
+        <div class="background">
+          <h1>🕺 Unit 7: We went dancing!</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit8" class="unit-container">
+        <div class="background">
+          <h1>🏘️ Unit 8: How’s the neighborhood?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit9" class="unit-container">
+        <div class="background">
+          <h1>👓 Unit 9: What does she look like?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit10" class="unit-container">
+        <div class="background">
+          <h1>✈️ Unit 10: Have you ever been there?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit11" class="unit-container">
+        <div class="background">
+          <h1>🌆 Unit 11: It's a really nice city.</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit12" class="unit-container">
+        <div class="background">
+          <h1>🛌 Unit 12: It's important to get rest.</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit13" class="unit-container">
+        <div class="background">
+          <h1>🍽️ Unit 13: What would you like?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit14" class="unit-container">
+        <div class="background">
+          <h1>❄️ Unit 14: It's the coldest city!</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit15" class="unit-container">
+        <div class="background">
+          <h1>🕒 Unit 15: What are you doing later?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+      <div id="unit16" class="unit-container">
+        <div class="background">
+          <h1>🔄 Unit 16: How have you changed?</h1>
+        </div>
+        <br>
+        <br>
+        <p>.......🚧 In Progress......</p>
+      </div>
+
+    </div>
+  </body>
+</html>

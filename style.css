@@ -364,7 +364,11 @@ table {
     width: 100%;
     min-width: 100%; /* Cambiado de 600px a 100% */
 }
-
+td.unit-column,
+th.unit-column {
+    min-width: 180px;
+    width: 180px;
+}
 th, td {
     border: 1px solid var(--border-color);
     padding: 10px 8px;

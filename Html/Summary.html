@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+    <title>Summary</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- BOTÓN FLOTANTE DEL MENÚ PRINCIPAL -->
+    <div class="menu-floating-btn" onclick="toggleMenu()">
+      <span class="menu-icon">☰</span>
+      <span class="menu-text">MENU</span>
+    </div>
+
+    <!-- OVERLAY DEL MENÚ PRINCIPAL -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- PANEL DEL MENÚ PRINCIPAL -->
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-header">
+        <h3>📚 Navigation</h3>
+        <button
+          class="menu-close"
+          onclick="closeMenu()"
+          aria-label="Cerrar menú"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="menu-links">
+        <a href="../index.html" class="menu-link">
+          <span class="menu-link-icon">🏠</span>
+          <span>Home</span>
+        </a>
+        <a href="A1.html" class="menu-link">
+          <span class="menu-link-icon">🌱</span>
+          <span>A1 Level</span>
+        </a>
+        <a href="A2.html" class="menu-link active">
+          <span class="menu-link-icon">🌿</span>
+          <span>A2 Level</span>
+        </a>
+        <a href="B1.html" class="menu-link active">
+          <span class="menu-link-icon">🪴</span>
+          <span>B1 Level</span>
+        </a>
+        <a href="B2.html" class="menu-link active">
+          <span class="menu-link-icon">🌳</span>
+          <span>B2 Level</span>
+        </a>
+        <a href="C1.html" class="menu-link active">
+          <span class="menu-link-icon">🌲</span>
+          <span>C1 Level</span>
+        </a>
+        <a href="Grammar.html" class="menu-link">
+          <span class="menu-link-icon">🔤</span>
+          <span>Grammar</span>
+        </a>
+        <a href="Vocabulary.html" class="menu-link">
+          <span class="menu-link-icon">📖</span>
+          <span>Vocabulary</span>
+        </a>
+        <a href="Practice.html" class="menu-link">
+          <span class="menu-link-icon">✍️</span>
+          <span>Practice Vocabulary</span>
+        </a>
+        <a href="Summary.html" class="menu-link">
+          <span class="menu-link-icon">📝</span>
+          <span>Units Summary</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Botón para abrir el menú de Unites -->
+    <div class="units-floating-btn" onclick="toggleUnitsMenu()">
+      <span class="units-icon">📋</span>
+      <span class="units-text">UNITS</span>
+    </div>
+
+    <!-- Overlay para el menú de Unites -->
+    <div
+      class="units-overlay"
+      id="unitsOverlay"
+      onclick="closeUnitsMenu()"
+    ></div>
+
+    <!-- Panel lateral de Unites -->
+    <div class="units-panel" id="unitsPanel">
+      <div class="units-panel-header">
+        <h3>📚 Levels</h3>
+        <button class="units-close" onclick="closeUnitsMenu()">✕</button>
+      </div>
+
+      <div class="units-list">
+        <!-- Cada Unit es un enlace que carga su contenido -->
+        <a href="#" class="unit-link" data-unit="unit1">A1 Level</a>
+        <a href="#" class="unit-link" data-unit="unit2">A2 Level</a>
+        <a href="#" class="unit-link" data-unit="unit3">B1 Level</a>
+        <a href="#" class="unit-link" data-unit="unit4">B2 Level</a>
+        <a href="#" class="unit-link" data-unit="unit5">C1 Level</a>
+      </div>
+    </div>
+    <div class="main-container">
+      <!-- A1 -->
+      <div id="unit1" class="unit-container active">
+        <div class="background">
+          <h1>🌱 A1 Level</h1>
+        </div>
+
+
+
+      </div>
+
+      <!-- A2 -->
+      <div id="unit2" class="unit-container">
+        <div class="background">
+          <h1>🌿 A2 Level</h1>
+        </div>
+
+<div class="table-responsive">
+  <table>
+    <caption>Grammar Reference – Units 1–16</caption>
+    <thead>
+      <tr>
+        <th>Unit</th>
+        <th>Topic 1</th>
+        <th>Structure 1</th>
+        <th>Example 1</th>
+        <th>Topic 2</th>
+        <th>Structure 2</th>
+        <th>Example 2</th>
+        <th>Vocabulary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- UNIT 1 -->
+      <tr>
+        <td>1</td>
+        <td>Past Tense (did / was / were)</td>
+        <td>
+          + Subject + <span class="highlight">past verb</span> + complement.<br>
+          - Subject + <span class="highlight">didn't</span> + base verb + complement.<br>
+          ? <span class="highlight">Did</span> + subject + base verb + complement?<br>
+          + Subject + <span class="highlight">was/were</span> + complement.<br>
+          - Subject + <span class="highlight">wasn't/weren't</span> + complement.<br>
+          ? <span class="highlight">Was/Were</span> + subject + complement?
+        </td>
+        <td>
+          She <span class="highlight">played</span> tennis yesterday.<br>
+          He <span class="highlight">didn't go</span> to school.<br>
+          <span class="highlight">Did</span> they <span class="highlight">visit</span> the museum?<br>
+          I <span class="highlight">was</span> at home all day.<br>
+          <span class="highlight">Were</span> you happy as a child?
+        </td>
+        <td>Used to</td>
+        <td>
+          + Subject + <span class="highlight">used to</span> + base verb + complement.<br>
+          - Subject + <span class="highlight">didn't use to</span> + base verb + complement.<br>
+          ? <span class="highlight">Did</span> + subject + <span class="highlight">use to</span> + base verb + complement?<br>
+          Wh + <span class="highlight">did</span> + subject + <span class="highlight">use to</span> + base verb?
+        </td>
+        <td>
+          I <span class="highlight">used to have</span> a cat when I was a kid.<br>
+          She <span class="highlight">didn't use to like</span> vegetables.<br>
+          <span class="highlight">Did</span> you <span class="highlight">use to play</span> video games?<br>
+          Where <span class="highlight">did</span> you <span class="highlight">use to live</span>?
+        </td>
+        <td>Pets, hobbies, places, possessions, people, childhood, memories</td>
+      </tr>
+      <!-- UNIT 2 -->
+      <tr>
+        <td>2</td>
+        <td>Expressions of quantity</td>
+        <td>
+          There are <span class="highlight">too many</span> + plural noun.<br>
+          There aren't <span class="highlight">enough</span> + plural noun.<br>
+          Subject + <span class="highlight">need(s) more</span> + plural noun.<br>
+          There should be <span class="highlight">fewer</span> + plural noun.<br>
+          There is <span class="highlight">too much</span> + noncount noun.<br>
+          There isn't <span class="highlight">enough</span> + noncount noun.<br>
+          There should be <span class="highlight">less</span> + noncount noun.
+        </td>
+        <td>
+          There are <span class="highlight">too many</span> buses on that route.<br>
+          There is <span class="highlight">too much</span> traffic downtown.<br>
+          There aren't <span class="highlight">enough</span> bike lanes in this city.<br>
+          There should be <span class="highlight">fewer</span> cars in the center.
+        </td>
+        <td>Indirect questions</td>
+        <td>
+          <span class="highlight">Could you tell me</span> + WH + subject + be?<br>
+          <span class="highlight">Do you know</span> + WH + subject + be?<br>
+          <span class="highlight">Could you tell me</span> + WH + subject + verb (no do/does)?<br>
+          <span class="highlight">Could you tell me</span> + WH + subject + can + verb?
+        </td>
+        <td>
+          <span class="highlight">Could you tell me</span> where the station <span class="highlight">is</span>?<br>
+          <span class="highlight">Do you know</span> what time the bus <span class="highlight">arrives</span>?<br>
+          <span class="highlight">Could you tell me</span> where I <span class="highlight">can buy</span> a ticket?
+        </td>
+        <td>Transportation, city objects, city places, transportation problems, city services</td>
+      </tr>
+      <!-- UNIT 3 -->
+      <tr>
+        <td>3</td>
+        <td>Evaluations and Comparisons</td>
+        <td>
+          Subject + be + <span class="highlight">not</span> + adjective + <span class="highlight">enough</span>.<br>
+          Subject + be + <span class="highlight">too</span> + adjective.<br>
+          Subject + be + <span class="highlight">not as</span> + adjective + <span class="highlight">as</span> + complement.<br>
+          Subject + be + <span class="highlight">just as</span> + adjective + <span class="highlight">as</span> + complement.<br>
+          Subject + don't have + <span class="highlight">as many</span> + count noun + <span class="highlight">as</span> + complement.<br>
+          Subject + don't have + <span class="highlight">as much</span> + noncount noun + <span class="highlight">as</span> + complement.
+        </td>
+        <td>
+          The apartment is <span class="highlight">not big enough</span> for us.<br>
+          This city is <span class="highlight">too expensive</span> to live in.<br>
+          My new place is <span class="highlight">not as quiet as</span> my old one.<br>
+          This neighborhood is <span class="highlight">just as safe as</span> mine.<br>
+          I don't have <span class="highlight">as many rooms as</span> she does.
+        </td>
+        <td>Wish</td>
+        <td>
+          Subject + <span class="highlight">wish(es)</span> + subject + <span class="highlight">verb (past)</span> + complement.<br>
+          Subject + <span class="highlight">wish(es)</span> + subject + <span class="highlight">were</span> + complement.<br>
+          Subject + <span class="highlight">wish(es)</span> + subject + <span class="highlight">could</span> + base verb.<br>
+          Subject + <span class="highlight">wish(es)</span> + subject + <span class="highlight">would</span> + base verb.
+        </td>
+        <td>
+          I <span class="highlight">wish</span> I <span class="highlight">lived</span> closer to work.<br>
+          She <span class="highlight">wishes</span> her apartment <span class="highlight">were</span> larger.<br>
+          He <span class="highlight">wishes</span> he <span class="highlight">could afford</span> a bigger house.<br>
+          I <span class="highlight">wish</span> they <span class="highlight">would fix</span> the elevator.
+        </td>
+        <td>Adjectives for places, house objects, houses and apartments, lifestyle changes, wishes</td>
+      </tr>
+      <!-- UNIT 4 -->
+      <tr>
+        <td>4</td>
+        <td>Simple Past vs. Present Perfect</td>
+        <td>
+          + Subject + <span class="highlight">have/has</span> + past participle + complement.<br>
+          - Subject + <span class="highlight">haven't/hasn't</span> + past participle + complement.<br>
+          ? <span class="highlight">Have/Has</span> + subject + <span class="highlight">ever</span> + past participle + complement?<br>
+          + Subject + <span class="highlight">past verb</span> + complement.<br>
+          - Subject + <span class="highlight">didn't</span> + base verb + complement.<br>
+          ? <span class="highlight">Did</span> + subject + base verb + complement?
+        </td>
+        <td>
+          I <span class="highlight">have tried</span> Thai food before.<br>
+          <span class="highlight">Have</span> you ever <span class="highlight">cooked</span> a risotto?<br>
+          She <span class="highlight">made</span> pasta last night.<br>
+          <span class="highlight">Did</span> you <span class="highlight">eat</span> at that restaurant?
+        </td>
+        <td>Recipes</td>
+        <td>
+          <span class="highlight">First,</span> + base verb + complement.<br>
+          <span class="highlight">Then,</span> + base verb + complement.<br>
+          <span class="highlight">Next,</span> + base verb + complement.<br>
+          <span class="highlight">After that,</span> + base verb + complement.<br>
+          <span class="highlight">Finally,</span> + base verb + complement.
+        </td>
+        <td>
+          <span class="highlight">First,</span> chop the onions.<br>
+          <span class="highlight">Then,</span> heat the oil.<br>
+          <span class="highlight">Next,</span> add the garlic.<br>
+          <span class="highlight">After that,</span> stir the sauce.<br>
+          <span class="highlight">Finally,</span> serve hot.
+        </td>
+        <td>Food, recipes, kitchen objects, cooking actions, cooking instructions, cooking methods</td>
+      </tr>
+      <!-- UNIT 5 -->
+      <tr>
+        <td>5</td>
+        <td>Future with "Be Going To" and "Will"</td>
+        <td>
+          + Subject + <span class="highlight">am/is/are going to</span> + base verb + complement.<br>
+          - Subject + <span class="highlight">am/is/are not going to</span> + base verb + complement.<br>
+          ? <span class="highlight">Am/Is/Are</span> + subject + <span class="highlight">going to</span> + base verb + complement?<br>
+          + Subject + <span class="highlight">will ('ll)</span> + base verb + complement.<br>
+          - Subject + <span class="highlight">won't</span> + base verb + complement.<br>
+          ? <span class="highlight">Will</span> + subject + base verb + complement?
+        </td>
+        <td>
+          We <span class="highlight">are going to travel</span> to Cartagena next month.<br>
+          <span class="highlight">Are</span> you <span class="highlight">going to book</span> the hotel?<br>
+          I think it <span class="highlight">will be</span> a great trip.<br>
+          She <span class="highlight">won't forget</span> her passport.
+        </td>
+        <td>Modals for Necessity and Suggestion</td>
+        <td>
+          + Subject + <span class="highlight">must</span> + base verb + complement.<br>
+          + Subject + <span class="highlight">need(s) to</span> + base verb + complement.<br>
+          - Subject + <span class="highlight">do/does not need to</span> + base verb + complement.<br>
+          + Subject + <span class="highlight">have/has to</span> + base verb + complement.<br>
+          + Subject + <span class="highlight">had better</span> + base verb + complement.<br>
+          + Subject + <span class="highlight">should</span> + base verb + complement.<br>
+          - Subject + <span class="highlight">shouldn't</span> + base verb + complement.
+        </td>
+        <td>
+          You <span class="highlight">must carry</span> your ID at all times.<br>
+          We <span class="highlight">need to arrive</span> early at the airport.<br>
+          You <span class="highlight">had better pack</span> a raincoat.<br>
+          You <span class="highlight">should try</span> the local food.
+        </td>
+        <td>Travel, vacations, plans</td>
+      </tr>
+      <!-- UNIT 6 -->
+      <tr>
+        <td>6</td>
+        <td>Two-part Verbs and "Will" for Responding to Requests</td>
+        <td>
+          Verb + particle + noun<br>
+          Verb + noun + particle<br>
+          Verb + <span class="highlight">pronoun</span> + particle (only with pronouns)<br>
+          Ok + <span class="highlight">I'll</span> + verb + pronoun + particle.<br>
+          All right + <span class="highlight">I'll</span> + verb + pronoun + particle.
+        </td>
+        <td>
+          Please <span class="highlight">turn off the lights</span> when you leave.<br>
+          Could you <span class="highlight">turn them off</span>, please?<br>
+          OK, <span class="highlight">I'll turn them off</span> right away.
+        </td>
+        <td>Requests with Modals and "Would You Mind…?"</td>
+        <td>
+          <span class="highlight">Can/Could</span> + you + base verb + complement, please?<br>
+          <span class="highlight">Would</span> + you + please + base verb + complement?<br>
+          <span class="highlight">Would you mind</span> + verb-ing + complement?<br>
+          <span class="highlight">Would you mind not</span> + verb-ing + complement?
+        </td>
+        <td>
+          <span class="highlight">Could you clean up</span> the kitchen, please?<br>
+          <span class="highlight">Would you mind doing</span> the dishes tonight?<br>
+          <span class="highlight">Would you mind not playing</span> music so loud?
+        </td>
+        <td>Complaints, household chores, requests, excuses, apologies</td>
+      </tr>
+      <!-- UNIT 7 -->
+      <tr>
+        <td>7</td>
+        <td>Infinitives and Gerunds for Uses and Purposes</td>
+        <td>
+          Use + noun + <span class="highlight">to</span> + base verb (infinitive)<br>
+          Use + noun + <span class="highlight">for</span> + verb-ing (gerund)
+        </td>
+        <td>
+          You can use this app <span class="highlight">to translate</span> text instantly.<br>
+          This software is used <span class="highlight">for editing</span> photos.
+        </td>
+        <td>Imperatives and Infinitives for Giving Suggestions</td>
+        <td>
+          <span class="highlight">Be sure to</span> + base verb + complement.<br>
+          <span class="highlight">Make sure to</span> + base verb + complement.<br>
+          <span class="highlight">Remember to</span> + base verb + complement.<br>
+          <span class="highlight">Don't forget to</span> + base verb + complement.<br>
+          <span class="highlight">Try not to</span> + base verb + complement.
+        </td>
+        <td>
+          <span class="highlight">Be sure to save</span> your work before closing.<br>
+          <span class="highlight">Remember to charge</span> your phone tonight.<br>
+          <span class="highlight">Don't forget to update</span> the app regularly.<br>
+          <span class="highlight">Try not to share</span> your password.
+        </td>
+        <td>Technology, instructions</td>
+      </tr>
+      <!-- UNIT 8 -->
+      <tr>
+        <td>8</td>
+        <td>Relative Clauses of Time</td>
+        <td>
+          Event/Date + be + time noun + <span class="highlight">when</span> + subject + verb + complement.
+        </td>
+        <td>
+          New Year's Eve is the night <span class="highlight">when</span> people celebrate with fireworks.<br>
+          December 25th is the day <span class="highlight">when</span> families exchange gifts.
+        </td>
+        <td>Adverbial Clauses of Time</td>
+        <td>
+          <span class="highlight">When</span> + subject + verb + complement, + subject + verb + complement.<br>
+          <span class="highlight">After</span> + subject + verb + complement, + subject + verb + complement.<br>
+          <span class="highlight">Before</span> + subject + verb + complement, + subject + verb + complement.
+        </td>
+        <td>
+          <span class="highlight">When</span> the parade starts, everyone goes outside.<br>
+          <span class="highlight">After</span> the fireworks end, we eat together.<br>
+          <span class="highlight">Before</span> the festival begins, people decorate the streets.
+        </td>
+        <td>Holidays, festivals, customs, celebrations</td>
+      </tr>
+      <!-- UNIT 9 -->
+      <tr>
+        <td>9</td>
+        <td>Time contrasts</td>
+        <td>
+          Past: <span class="highlight">A few years ago,</span> + past tense / <span class="highlight">used to</span> + base verb.<br>
+          Present: <span class="highlight">These days,</span> + present continuous.<br>
+          Future: <span class="highlight">In the future,</span> + will/might/be going to + base verb.
+        </td>
+        <td>
+          <span class="highlight">A few years ago,</span> people <span class="highlight">used to write</span> letters.<br>
+          <span class="highlight">These days,</span> everyone <span class="highlight">is using</span> messaging apps.<br>
+          <span class="highlight">In the future,</span> AI <span class="highlight">will change</span> how we work.
+        </td>
+        <td>Conditional sentences with if-clauses</td>
+        <td>
+          + <span class="highlight">If</span> + subject + base verb, + subject + <span class="highlight">will</span> + base verb.<br>
+          - <span class="highlight">If</span> + subject + base verb, + subject + <span class="highlight">won't</span> + base verb.<br>
+          + <span class="highlight">If</span> + subject + present tense, + subject + <span class="highlight">may</span> + base verb.<br>
+          + <span class="highlight">If</span> + subject + present tense, + subject + <span class="highlight">might</span> + base verb.
+        </td>
+        <td>
+          <span class="highlight">If</span> it rains tomorrow, we <span class="highlight">won't go</span> to the park.<br>
+          <span class="highlight">If</span> you study hard, you <span class="highlight">may pass</span> the exam.<br>
+          <span class="highlight">If</span> I save money, I <span class="highlight">might travel</span> abroad next year.
+        </td>
+        <td>Life in the past, present, and future; changes and contrasts; consequences</td>
+      </tr>
+      <!-- UNIT 10 -->
+      <tr>
+        <td>10</td>
+        <td>Gerunds; short responses</td>
+        <td>
+          Subject + <span class="highlight">love</span> + verb-ing + complement.<br>
+          Subject + <span class="highlight">hate</span> + verb-ing + complement.<br>
+          Subject + <span class="highlight">be good at</span> + verb-ing + complement.<br>
+          Subject + <span class="highlight">don't mind</span> + verb-ing + complement.<br>
+          Subject + <span class="highlight">be not good at</span> + verb-ing + complement.<br>
+          Subject + <span class="highlight">can't stand</span> + verb-ing + complement.
+        </td>
+        <td>
+          I <span class="highlight">love working</span> with people in a team.<br>
+          She <span class="highlight">can't stand doing</span> repetitive tasks.<br>
+          He's <span class="highlight">good at solving</span> technical problems.<br>
+          I <span class="highlight">don't mind working</span> under pressure.
+        </td>
+        <td>Clauses with because</td>
+        <td>
+          + Subject + <span class="highlight">would</span> + base verb + complement + <span class="highlight">because</span> + subject + verb.<br>
+          - Subject + <span class="highlight">wouldn't</span> + base verb + complement + <span class="highlight">because</span> + subject + verb.<br>
+          + Subject + <span class="highlight">could</span> + base verb + complement + <span class="highlight">because</span> + subject + verb.
+        </td>
+        <td>
+          I <span class="highlight">would enjoy</span> this job <span class="highlight">because</span> I love helping others.<br>
+          She <span class="highlight">wouldn't take</span> that position <span class="highlight">because</span> the salary is too low.<br>
+          He <span class="highlight">could succeed</span> in that field <span class="highlight">because</span> he's very creative.
+        </td>
+        <td>Abilities and skills, job preferences, personality traits, careers</td>
+      </tr>
+      <!-- UNIT 11 -->
+      <tr>
+        <td>11</td>
+        <td>Passive with by (Simple Past)</td>
+        <td>
+          + Object + <span class="highlight">was/were</span> + past participle + <span class="highlight">by</span> + agent + complement.<br>
+          - Object + <span class="highlight">wasn't/weren't</span> + past participle + <span class="highlight">by</span> + agent + complement.
+        </td>
+        <td>
+          The Eiffel Tower <span class="highlight">was designed by</span> Gustave Eiffel.<br>
+          These ruins <span class="highlight">weren't built by</span> the Romans.
+        </td>
+        <td>Passive without by (Simple Present)</td>
+        <td>
+          + Subject + <span class="highlight">am/is/are</span> + past participle + complement.<br>
+          - Subject + <span class="highlight">am not/isn't/aren't</span> + past participle + complement.
+        </td>
+        <td>
+          This monument <span class="highlight">is visited</span> by millions of tourists every year.<br>
+          That area <span class="highlight">isn't protected</span> by heritage laws.
+        </td>
+        <td>Landmarks and monuments, world knowledge</td>
+      </tr>
+      <!-- UNIT 12 -->
+      <tr>
+        <td>12</td>
+        <td>Past Continuous vs. Simple Past</td>
+        <td>
+          Subject + <span class="highlight">was/were</span> + verb-ing + <span class="highlight">when</span> + subject + simple past verb + complement.<br>
+          <span class="highlight">While</span> + subject + <span class="highlight">was/were</span> + verb-ing, + subject + simple past verb + complement.<br>
+          Subject + <span class="highlight">was/were</span> + verb-ing + <span class="highlight">but</span> + subject + simple past verb + complement.
+        </td>
+        <td>
+          I <span class="highlight">was cooking</span> dinner <span class="highlight">when</span> the power went out.<br>
+          <span class="highlight">While</span> she <span class="highlight">was reading,</span> her phone rang.<br>
+          He <span class="highlight">was leaving</span> the office <span class="highlight">but</span> forgot his keys.
+        </td>
+        <td>Present Perfect Continuous</td>
+        <td>
+          + Subject + <span class="highlight">have/has been</span> + verb-ing + complement.<br>
+          - Subject + <span class="highlight">haven't/hasn't been</span> + verb-ing + complement.<br>
+          ? <span class="highlight">Have/Has</span> + subject + <span class="highlight">been</span> + verb-ing + complement?<br>
+          Subject + have/has been + verb-ing + <span class="highlight">for</span> + period of time.<br>
+          Subject + have/has been + verb-ing + <span class="highlight">since</span> + point in time.
+        </td>
+        <td>
+          She <span class="highlight">has been studying</span> English <span class="highlight">for</span> three years.<br>
+          I <span class="highlight">have been working</span> here <span class="highlight">since</span> 2021.<br>
+          How long <span class="highlight">have</span> you <span class="highlight">been waiting</span> for the bus?
+        </td>
+        <td>Storytelling, unexpected recent past events</td>
+      </tr>
+      <!-- UNIT 13 -->
+      <tr>
+        <td>13</td>
+        <td>Participles as Adjectives</td>
+        <td>
+          Subject + be + <span class="highlight">adjective (-ing)</span> + complement.<br>
+          Subject + be + <span class="highlight">past participle adjective</span> + complement.<br>
+          Subject + be + not + <span class="highlight">past participle adjective</span> + complement.
+        </td>
+        <td>
+          The movie was really <span class="highlight">exciting.</span><br>
+          I was completely <span class="highlight">bored</span> by the second half.<br>
+          She thinks the ending was <span class="highlight">surprising.</span>
+        </td>
+        <td>Relative Pronouns for People and Things</td>
+        <td>
+          + Subject + be + noun + <span class="highlight">who/that</span> + verb + complement.<br>
+          - Subject + be + noun + <span class="highlight">who/that</span> + don't/doesn't + base verb + complement.<br>
+          + Subject + be + noun + <span class="highlight">which/that</span> + verb + complement.<br>
+          - Subject + be + noun + <span class="highlight">which/that</span> + don't/doesn't + base verb + complement.
+        </td>
+        <td>
+          She's an actress <span class="highlight">who</span> has won many awards.<br>
+          It's a book <span class="highlight">which</span> changed my perspective on life.<br>
+          He's someone <span class="highlight">that</span> always recommends great films.
+        </td>
+        <td>Entertainment, movies and books, reactions and opinions</td>
+      </tr>
+      <!-- UNIT 14 -->
+      <tr>
+        <td>14</td>
+        <td>Modals and Adverbs</td>
+        <td>
+          + Subject + <span class="highlight">may/might</span> + mean + subject + verb + complement.<br>
+          + Subject + <span class="highlight">could</span> + mean + subject + verb + complement.<br>
+          + Subject + <span class="highlight">must</span> + mean + subject + verb + complement.<br>
+          + <span class="highlight">Maybe/Perhaps</span> + subject + means + subject + verb + complement.<br>
+          + Subject + <span class="highlight">probably</span> + means + subject + verb + complement.<br>
+          + Subject + <span class="highlight">definitely</span> + means + subject + verb + complement.
+        </td>
+        <td>
+          That gesture <span class="highlight">might mean</span> he's nervous.<br>
+          Nodding <span class="highlight">must mean</span> he agrees.<br>
+          This sign <span class="highlight">probably means</span> you can't park here.<br>
+          That symbol <span class="highlight">definitely means</span> danger.
+        </td>
+        <td>Permission, Obligation, and Prohibition</td>
+        <td>
+          Subject + <span class="highlight">can</span> / <span class="highlight">be allowed to</span> + base verb + complement.<br>
+          Subject + <span class="highlight">have/has to</span> + base verb + complement.<br>
+          Subject + <span class="highlight">have/has got to</span> + base verb + complement.<br>
+          Subject + <span class="highlight">can't</span> + base verb + complement.<br>
+          Subject + <span class="highlight">be not allowed to</span> + base verb + complement.
+        </td>
+        <td>
+          You <span class="highlight">are allowed to take</span> photos inside the museum.<br>
+          You <span class="highlight">have to wear</span> a seatbelt at all times.<br>
+          You <span class="highlight">can't smoke</span> in this area.
+        </td>
+        <td>Nonverbal communication, gestures and meaning, signs, drawing conclusions</td>
+      </tr>
+      <!-- UNIT 15 -->
+      <tr>
+        <td>15</td>
+        <td>Unreal conditional sentences with if clauses (Second Conditional)</td>
+        <td>
+          Wh + <span class="highlight">would/could/might</span> + subject + base verb + <span class="highlight">if</span> + subject + simple past?<br>
+          + <span class="highlight">If</span> + subject + simple past, + subject + <span class="highlight">would</span> + base verb.<br>
+          - <span class="highlight">If</span> + subject + simple past, + subject + <span class="highlight">wouldn't</span> + base verb.<br>
+          + <span class="highlight">If</span> + subject + simple past, + subject + <span class="highlight">could</span> + base verb.<br>
+          + <span class="highlight">If</span> + subject + simple past, + subject + <span class="highlight">might</span> + base verb.
+        </td>
+        <td>
+          <span class="highlight">If</span> I <span class="highlight">had</span> more money, I <span class="highlight">would travel</span> the world.<br>
+          <span class="highlight">If</span> she <span class="highlight">spoke</span> English fluently, she <span class="highlight">could get</span> that job.<br>
+          <span class="highlight">If</span> he <span class="highlight">saved</span> enough, he <span class="highlight">might buy</span> a house.<br>
+          What <span class="highlight">would</span> you do <span class="highlight">if</span> you won the lottery?
+        </td>
+        <td>Past Modals</td>
+        <td>
+          + Subject + <span class="highlight">should have</span> + past participle + complement.<br>
+          - Subject + <span class="highlight">shouldn't have</span> + past participle + complement.<br>
+          ? Wh + <span class="highlight">should</span> + subject + <span class="highlight">have</span> + past participle?<br>
+          + Subject + <span class="highlight">would have</span> + past participle + complement.<br>
+          - Subject + <span class="highlight">wouldn't have</span> + past participle + complement.
+        </td>
+        <td>
+          I <span class="highlight">should have saved</span> more money last year.<br>
+          She <span class="highlight">shouldn't have spent</span> all her savings.<br>
+          He <span class="highlight">would have invested</span> the money wisely.
+        </td>
+        <td>Money, hopes, predicaments, speculations</td>
+      </tr>
+      <!-- UNIT 16 -->
+      <tr>
+        <td>16</td>
+        <td>Reported Speech: Requests</td>
+        <td>
+          + Subject + <span class="highlight">said</span> + to + base verb + complement.<br>
+          - Subject + <span class="highlight">said</span> + not to + base verb + complement.<br>
+          + Subject + <span class="highlight">told</span> + object + to + base verb + complement.<br>
+          - Subject + <span class="highlight">told</span> + object + not to + base verb + complement.<br>
+          + Subject + <span class="highlight">asked</span> + object + to + base verb + complement.<br>
+          - Subject + <span class="highlight">asked</span> + object + not to + base verb + complement.
+        </td>
+        <td>
+          She <span class="highlight">said to arrive</span> early.<br>
+          He <span class="highlight">told me to bring</span> my ID.<br>
+          She <span class="highlight">told us not to be</span> late.<br>
+          They <span class="highlight">asked me to wait</span> outside.
+        </td>
+        <td>Reported Speech: Statements</td>
+        <td>
+          Subject + <span class="highlight">said (that)</span> + subject + reported verb + complement.<br>
+          Subject + <span class="highlight">told</span> + object + <span class="highlight">(that)</span> + subject + reported verb + complement.<br>
+          Present Simple → <span class="highlight">Past Simple</span><br>
+          Past Simple → <span class="highlight">Past Perfect</span><br>
+          Will → <span class="highlight">Would</span> · Can → <span class="highlight">Could</span> · May → <span class="highlight">Might</span> · Must → <span class="highlight">Had to</span>
+        </td>
+        <td>
+          💬 "I'm busy." → She <span class="highlight">said (that) she was</span> busy.<br>
+          💬 "I called you." → He <span class="highlight">said (that) he had called</span> me.<br>
+          💬 "I'll come." → She <span class="highlight">told me she would come.</span><br>
+          💬 "I can help." → He <span class="highlight">said he could help.</span><br>
+          💬 "I must leave." → She <span class="highlight">said she had to leave.</span>
+        </td>
+        <td>Requests, excuses, invitations</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+      </div>
+
+      <!-- B1 -->
+      <div id="unit3" class="unit-container">
+        <div class="background">
+          <h1>🪴 B1 Level</h1>
+        </div>
+      </div>
+
+      <!-- B2 -->
+      <div id="unit4" class="unit-container">
+        <div class="background">
+          <h1>🌳 B2 Level</h1>
+        </div>
+      </div>
+
+      <!-- C1 -->
+      <div id="unit5" class="unit-container">
+        <div class="background">
+          <h1>🌲 C1 Level</h1>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
