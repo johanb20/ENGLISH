@@ -40,8 +40,20 @@
       --note-bg: #d4e4f5;
 }
 
+.theme-green {
+
+      --bg-color: #DCEFE1;
+      --border-color: rgb(20, 105, 45);
+      --table-bg: #B8DDBF;
+      --table-header: #8FC69A;
+      --primary-color: #6DB77A;
+      --primary-hover: #3F9652;
+      --note-bg: #E6F5E9;
+}
+
 body.theme-pink,
-body.theme-blue {
+body.theme-blue,
+body.theme-green {
       background-color: var(--bg-color);
 }
 
