@@ -581,6 +581,27 @@ a.card {
     padding: 5px 0;
 }
 
+/* ===== ESCALA DE FORMALIDAD VERTICAL ===== */ 
+.vertical-formality { 
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.vertical-formality-bar { 
+    width: 40px;
+    flex: 1;
+    min-height: 120px;
+    background: linear-gradient( to bottom, var(--success), var(--warning), var(--danger) ); border-radius: 20px; margin: 10px 0; 
+} 
+.vertical-formality-label { 
+    font-size: clamp(12px, 2.2vw, 14px);
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap; 
+}
 /* ===== TIP BOX ===== */
 .tip-box {
     margin: 20px 10px;

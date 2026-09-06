@@ -1,544 +1,1595 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
-    <script src="../script.js" defer></script>
-    <title>English B1</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪴</text></svg>"
-    />
-  </head>
-  <body class="theme-green">
-    <!-- BOTÓN FLOTANTE DEL MENÚ PRINCIPAL (el que ya tienes) -->
-    <div class="menu-floating-btn" onclick="toggleMenu()">
-      <span class="menu-icon">☰</span>
-      <span class="menu-text">MENU</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../script.js" defer></script>
+  <title>English B1</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪴</text></svg>" />
+</head>
+
+<body class="theme-green">
+  <!-- BOTÓN FLOTANTE DEL MENÚ PRINCIPAL (el que ya tienes) -->
+  <div class="menu-floating-btn" onclick="toggleMenu()">
+    <span class="menu-icon">☰</span>
+    <span class="menu-text">MENU</span>
+  </div>
+
+  <!-- OVERLAY DEL MENÚ PRINCIPAL -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- PANEL DEL MENÚ PRINCIPAL -->
+  <div class="menu-panel" id="menuPanel">
+    <div class="menu-header">
+      <h3>📚 Navigation</h3>
+      <button class="menu-close" onclick="closeMenu()" aria-label="Cerrar menú">
+        ✕
+      </button>
     </div>
 
-    <!-- OVERLAY DEL MENÚ PRINCIPAL -->
-    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu-links">
+      <a href="../index.html" class="menu-link">
+        <span class="menu-link-icon">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="A1.html" class="menu-link">
+        <span class="menu-link-icon">🌱</span>
+        <span>A1 Level</span>
+      </a>
+      <a href="A2.html" class="menu-link active">
+        <span class="menu-link-icon">🌿</span>
+        <span>A2 Level</span>
+      </a>
+      <a href="B1.html" class="menu-link active">
+        <span class="menu-link-icon">🪴</span>
+        <span>B1 Level</span>
+      </a>
+      <a href="B2.html" class="menu-link active">
+        <span class="menu-link-icon">🌳</span>
+        <span>B2 Level</span>
+      </a>
+      <a href="C1.html" class="menu-link active">
+        <span class="menu-link-icon">🌲</span>
+        <span>C1 Level</span>
+      </a>
+      <a href="Grammar.html" class="menu-link">
+        <span class="menu-link-icon">🔤</span>
+        <span>Grammar</span>
+      </a>
+      <a href="Vocabulary.html" class="menu-link">
+        <span class="menu-link-icon">📖</span>
+        <span>Vocabulary</span>
+      </a>
+      <a href="Practice.html" class="menu-link">
+        <span class="menu-link-icon">✍️</span>
+        <span>Practice Vocabulary</span>
+      </a>
+      <a href="Summary.html" class="menu-link">
+        <span class="menu-link-icon">📝</span>
+        <span>Units Summary</span>
+      </a>
+    </div>
+  </div>
 
-    <!-- PANEL DEL MENÚ PRINCIPAL -->
-    <div class="menu-panel" id="menuPanel">
-      <div class="menu-header">
-        <h3>📚 Navigation</h3>
-        <button
-          class="menu-close"
-          onclick="closeMenu()"
-          aria-label="Cerrar menú"
-        >
-          ✕
-        </button>
+  <!-- NUEVO: Botón para abrir el menú de Unites -->
+  <div class="units-floating-btn" onclick="toggleUnitsMenu()">
+    <span class="units-icon">📋</span>
+    <span class="units-text">UNITS</span>
+  </div>
+
+  <!-- NUEVO: Overlay para el menú de Unites -->
+  <div class="units-overlay" id="unitsOverlay" onclick="closeUnitsMenu()"></div>
+
+  <!-- NUEVO: Panel lateral de Unites -->
+  <div class="units-panel" id="unitsPanel">
+    <div class="units-panel-header">
+      <h3>📚 Units B1</h3>
+      <button class="units-close" onclick="closeUnitsMenu()">✕</button>
+    </div>
+    <div class="units-list">
+      <!-- Cada Unit es un enlace que carga su contenido -->
+      <a href="#" class="unit-link active" data-unit="unit1">🤝 Unit 1: That's my kind of friend!</a>
+      <a href="#" class="unit-link" data-unit="unit2">💼 Unit 2: Working 9 to 5</a>
+      <a href="#" class="unit-link" data-unit="unit3">🤲 Unit 3: Lend a hand.</a>
+      <a href="#" class="unit-link" data-unit="unit4">❓ Unit 4: What happened?</a>
+      <a href="#" class="unit-link" data-unit="unit5">🌎 Unit 5: Expanding your horizons</a>
+      <a href="#" class="unit-link" data-unit="unit6">🔧 Unit 6: That needs fixing.</a>
+      <a href="#" class="unit-link" data-unit="unit7">🌱 Unit 7: What can we do?</a>
+      <a href="#" class="unit-link" data-unit="unit8">📚 Unit 8: Never stop learning.</a>
+      <a href="#" class="unit-link" data-unit="unit9">✅ Unit 9: Getting things done</a>
+      <a href="#" class="unit-link" data-unit="unit10">⏳ Unit 10: A matter of time</a>
+      <a href="#" class="unit-link" data-unit="unit11">🎓 Unit 11: Rites of passage</a>
+      <a href="#" class="unit-link" data-unit="unit12">🏆 Unit 12: Keys to success</a>
+      <a href="#" class="unit-link" data-unit="unit13">🔮 Unit 13: What might have been</a>
+      <a href="#" class="unit-link" data-unit="unit14">💡 Unit 14: Creative careers</a>
+      <a href="#" class="unit-link" data-unit="unit15">⚖️ Unit 15: A law must be passed!</a>
+      <a href="#" class="unit-link" data-unit="unit16">🎯 Unit 16: Reaching your goals</a>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div id="unit1" class="unit-container active">
+      <div class="background">
+        <h1>🤝 Unit 1: That's my kind of friend!</h1>
       </div>
 
-      <div class="menu-links">
-        <a href="../index.html" class="menu-link">
-          <span class="menu-link-icon">🏠</span>
-          <span>Home</span>
-        </a>
-        <a href="A1.html" class="menu-link">
-          <span class="menu-link-icon">🌱</span>
-          <span>A1 Level</span>
-        </a>
-        <a href="A2.html" class="menu-link active">
-          <span class="menu-link-icon">🌿</span>
-          <span>A2 Level</span>
-        </a>
-        <a href="B1.html" class="menu-link active">
-          <span class="menu-link-icon">🪴</span>
-          <span>B1 Level</span>
-        </a>
-        <a href="B2.html" class="menu-link active">
-          <span class="menu-link-icon">🌳</span>
-          <span>B2 Level</span>
-        </a>
-        <a href="C1.html" class="menu-link active">
-          <span class="menu-link-icon">🌲</span>
-          <span>C1 Level</span>
-        </a>
-        <a href="Grammar.html" class="menu-link">
-          <span class="menu-link-icon">🔤</span>
-          <span>Grammar</span>
-        </a>
-        <a href="Vocabulary.html" class="menu-link">
-          <span class="menu-link-icon">📖</span>
-          <span>Vocabulary</span>
-        </a>
-        <a href="Practice.html" class="menu-link">
-          <span class="menu-link-icon">✍️</span>
-          <span>Practice Vocabulary</span>
-        </a>
-        <a href="Summary.html" class="menu-link">
-          <span class="menu-link-icon">📝</span>
-          <span>Units Summary</span>
-        </a>
+      <div class="unit-content active">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>
+              Personality types and qualities → Tipos y cualidades de
+              personalidad 🧠
+            </li>
+            <li>Relationships → Relaciones 🤝</li>
+            <li>Likes and dislikes → Gustos y disgustos ❤️</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Describing personalities → Describir personalidades</li>
+            <li>
+              Expressing likes and dislikes → Expresar gustos y disgustos
+            </li>
+            <li>
+              Agreeing and disagreeing → Estar de acuerdo y en desacuerdo
+            </li>
+            <li>Complaining → Quejarse</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Relative pronouns as subjects and objects → Pronombres relativos
+              como sujetos y objetos
+            </li>
+            <li>
+              It clauses + adverbial clauses with when → Cláusulas con “it” +
+              cláusulas adverbiales con “when”
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Relative Pronouns
+          </caption>
+          <thead>
+            <tr>
+              <th>As the Subject of a Clause</th>
+              <th>As the Object of a Clause</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                I like people <span class="highlight">who/that</span> aren't
+                too serious.
+              </td>
+              <td>
+                I want someone (<span class="highlight">who/that</span>) I can
+                have fun with.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                I like people <span class="highlight">who/that</span> have a
+                good sense of humor.
+              </td>
+              <td>
+                I'd like someone (<span class="highlight">who/that</span>) I
+                can talk to easily.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Personality and Character
+          </caption>
+          <thead>
+            <tr>
+              <th>Word / Expression</th>
+              <th>Meaning in Spanish</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>a good conversationalist</td>
+              <td>un buen conversador / una persona con facilidad para conversar</td>
+            </tr>
+            <tr>
+              <td>ambitious</td>
+              <td>ambicioso / con metas y aspiraciones</td>
+            </tr>
+            <tr>
+              <td>angry</td>
+              <td>enojado / enfadado</td>
+            </tr>
+            <tr>
+              <td>brag</td>
+              <td>presumir / alardear</td>
+            </tr>
+            <tr>
+              <td>easygoing</td>
+              <td>tranquilo / relajado / de trato fácil</td>
+            </tr>
+            <tr>
+              <td>egotistical</td>
+              <td>egocéntrico / presumido</td>
+            </tr>
+            <tr>
+              <td>flexible</td>
+              <td>flexible / adaptable</td>
+            </tr>
+            <tr>
+              <td>generous</td>
+              <td>generoso</td>
+            </tr>
+            <tr>
+              <td>helpful</td>
+              <td>servicial / dispuesto a ayudar</td>
+            </tr>
+            <tr>
+              <td>inflexible</td>
+              <td>inflexible / poco dispuesto a cambiar</td>
+            </tr>
+            <tr>
+              <td>modest</td>
+              <td>modesto / humilde</td>
+            </tr>
+            <tr>
+              <td>outgoing</td>
+              <td>extrovertido / sociable</td>
+            </tr>
+            <tr>
+              <td>stingy</td>
+              <td>tacaño / avaro</td>
+            </tr>
+            <tr>
+              <td>straightforward</td>
+              <td>directo / franco / sincero</td>
+            </tr>
+            <tr>
+              <td>stubborn</td>
+              <td>terco / obstinado</td>
+            </tr>
+            <tr>
+              <td>supportive</td>
+              <td>comprensivo / que brinda apoyo</td>
+            </tr>
+            <tr>
+              <td>temperamental</td>
+              <td>temperamental / de cambios de humor</td>
+            </tr>
+            <tr>
+              <td>unpredictable</td>
+              <td>impredecible</td>
+            </tr>
+            <tr>
+              <td>unreliable</td>
+              <td>poco confiable / irresponsable</td>
+            </tr>
+            <tr>
+              <td>friendly</td>
+              <td>amigable / amistoso</td>
+            </tr>
+            <tr>
+              <td>honest</td>
+              <td>honesto / sincero</td>
+            </tr>
+            <tr>
+              <td>dishonest</td>
+              <td>deshonesto</td>
+            </tr>
+            <tr>
+              <td>kind</td>
+              <td>amable / bondadoso</td>
+            </tr>
+            <tr>
+              <td>rude</td>
+              <td>grosero / maleducado</td>
+            </tr>
+            <tr>
+              <td>confident</td>
+              <td>seguro de sí mismo</td>
+            </tr>
+            <tr>
+              <td>shy</td>
+              <td>tímido</td>
+            </tr>
+            <tr>
+              <td>reliable</td>
+              <td>confiable / responsable</td>
+            </tr>
+            <tr>
+              <td>responsible</td>
+              <td>responsable</td>
+            </tr>
+            <tr>
+              <td>creative</td>
+              <td>creativo</td>
+            </tr>
+            <tr>
+              <td>serious</td>
+              <td>serio</td>
+            </tr>
+            <tr>
+              <td>funny</td>
+              <td>divertido / gracioso</td>
+            </tr>
+            <tr>
+              <td>talkative</td>
+              <td>hablador / conversador</td>
+            </tr>
+            <tr>
+              <td>quiet</td>
+              <td>callado / tranquilo</td>
+            </tr>
+            <tr>
+              <td>patient</td>
+              <td>paciente</td>
+            </tr>
+            <tr>
+              <td>impatient</td>
+              <td>impaciente</td>
+            </tr>
+            <tr>
+              <td>hardworking</td>
+              <td>trabajador / dedicado</td>
+            </tr>
+            <tr>
+              <td>lazy</td>
+              <td>perezoso / flojo</td>
+            </tr>
+            <tr>
+              <td>selfish</td>
+              <td>egoísta</td>
+            </tr>
+            <tr>
+              <td>selfless</td>
+              <td>desinteresado</td>
+            </tr>
+            <tr>
+              <td>optimistic</td>
+              <td>optimista</td>
+            </tr>
+            <tr>
+              <td>pessimistic</td>
+              <td>pesimista</td>
+            </tr>
+            <tr>
+              <td>calm</td>
+              <td>tranquilo / calmado</td>
+            </tr>
+            <tr>
+              <td>moody</td>
+              <td>malhumorado / de humor cambiante</td>
+            </tr>
+            <tr>
+              <td>polite</td>
+              <td>educado / cortés</td>
+            </tr>
+            <tr>
+              <td>competitive</td>
+              <td>competitivo</td>
+            </tr>
+            <tr>
+              <td>curious</td>
+              <td>curioso</td>
+            </tr>
+            <tr>
+              <td>determined</td>
+              <td>decidido / determinado</td>
+            </tr>
+            <tr>
+              <td>bragging</td>
+              <td>presumido / que presume de sí mismo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <caption>
+            It Clauses + Adverbial Clauses with When
+          </caption>
+          <thead>
+            <tr>
+              <th>It Clauses</th>
+              <th>Adverbial Clauses with When</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>I like <span class="highlight">it</span></td>
+              <td>
+                <span class="highlight">when</span> my roommate cleans the
+                apartment.
+              </td>
+            </tr>
+            <tr>
+              <td>I don't mind <span class="highlight">it</span></td>
+              <td>
+                <span class="highlight">when</span> a friend answers the phone
+                at the dinner table.
+              </td>
+            </tr>
+            <tr>
+              <td>I can't stand <span class="highlight">it</span></td>
+              <td>
+                <span class="highlight">when</span> I'm upset and people tell
+                me to calm down.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="highlight">It</span> makes me happy</td>
+              <td>
+                <span class="highlight">when</span> people do nice things for
+                no reason.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="highlight">It</span> bothers me</td>
+              <td>
+                <span class="highlight">when</span> my doctor arrives late for
+                an appointment.
+              </td>
+            </tr>
+            <tr>
+              <td><span class="highlight">It</span> upsets me</td>
+              <td>
+                <span class="highlight">when</span> a close friend forgets my
+                birthday.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Likes, Dislikes and Reactions
+          </caption>
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Meaning in Spanish</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>I love it</td>
+              <td>Me encanta</td>
+            </tr>
+            <tr>
+              <td>I like it</td>
+              <td>Me gusta</td>
+            </tr>
+            <tr>
+              <td>It makes me happy</td>
+              <td>Me hace feliz</td>
+            </tr>
+            <tr>
+              <td>I don't mind it</td>
+              <td>No me molesta / No me importa</td>
+            </tr>
+            <tr>
+              <td>It doesn't bother me</td>
+              <td>No me molesta</td>
+            </tr>
+            <tr>
+              <td>I don't like it</td>
+              <td>No me gusta</td>
+            </tr>
+            <tr>
+              <td>I hate it</td>
+              <td>Lo odio / Lo detesto</td>
+            </tr>
+            <tr>
+              <td>It annoys me</td>
+              <td>Me molesta / Me fastidia</td>
+            </tr>
+            <tr>
+              <td>It bothers me</td>
+              <td>Me molesta</td>
+            </tr>
+            <tr>
+              <td>It upsets me</td>
+              <td>Me molesta / Me disgusta / Me afecta</td>
+            </tr>
+            <tr>
+              <td>It really upsets me</td>
+              <td>Realmente me molesta / Me afecta mucho</td>
+            </tr>
+            <tr>
+              <td>I can't stand it</td>
+              <td>No lo soporto / No lo aguanto</td>
+            </tr>
+            <tr>
+              <td>I really like it</td>
+              <td>Me gusta mucho</td>
+            </tr>
+            <tr>
+              <td>I really love it</td>
+              <td>Me encanta mucho / Me encanta de verdad</td>
+            </tr>
+            <tr>
+              <td>I'm interested in it</td>
+              <td>Estoy interesado en eso</td>
+            </tr>
+            <tr>
+              <td>I'm not interested in it</td>
+              <td>No estoy interesado en eso</td>
+            </tr>
+            <tr>
+              <td>I'm crazy about it</td>
+              <td>Me encanta / Me fascina</td>
+            </tr>
+            <tr>
+              <td>I'm not a fan of it</td>
+              <td>No soy muy fan de eso / No me gusta mucho</td>
+            </tr>
+            <tr>
+              <td>I'm tired of it</td>
+              <td>Estoy cansado de eso</td>
+            </tr>
+            <tr>
+              <td>I'm worried about it</td>
+              <td>Estoy preocupado por eso</td>
+            </tr>
+            <tr>
+              <td>I'm excited about it</td>
+              <td>Estoy emocionado por eso</td>
+            </tr>
+            <tr>
+              <td>I'm afraid of it</td>
+              <td>Le tengo miedo / Tengo miedo de eso</td>
+            </tr>
+            <tr>
+              <td>It scares me</td>
+              <td>Me asusta</td>
+            </tr>
+            <tr>
+              <td>It surprises me</td>
+              <td>Me sorprende</td>
+            </tr>
+            <tr>
+              <td>It makes me sad</td>
+              <td>Me pone triste</td>
+            </tr>
+            <tr>
+              <td>It makes me angry</td>
+              <td>Me hace enojar</td>
+            </tr>
+            <tr>
+              <td>It makes me nervous</td>
+              <td>Me pone nervioso</td>
+            </tr>
+            <tr>
+              <td>It makes me laugh</td>
+              <td>Me hace reír</td>
+            </tr>
+            <tr>
+              <td>It makes me feel good</td>
+              <td>Me hace sentir bien</td>
+            </tr>
+            <tr>
+              <td>It makes me feel uncomfortable</td>
+              <td>Me hace sentir incómodo</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- NUEVO: Botón para abrir el menú de Unites -->
-    <div class="units-floating-btn" onclick="toggleUnitsMenu()">
-      <span class="units-icon">📋</span>
-      <span class="units-text">UNITS</span>
-    </div>
-
-    <!-- NUEVO: Overlay para el menú de Unites -->
-    <div
-      class="units-overlay"
-      id="unitsOverlay"
-      onclick="closeUnitsMenu()"
-    ></div>
-
-    <!-- NUEVO: Panel lateral de Unites -->
-    <div class="units-panel" id="unitsPanel">
-      <div class="units-panel-header">
-        <h3>📚 Units B1</h3>
-        <button class="units-close" onclick="closeUnitsMenu()">✕</button>
+    <div id="unit2" class="unit-container">
+      <div class="background">
+        <h1>💼 Unit 2: Working 9 to 5</h1>
       </div>
-      <div class="units-list">
-        <!-- Cada Unit es un enlace que carga su contenido -->
-        <a href="#" class="unit-link active" data-unit="unit1"
-          >🤝 Unit 1: That's my kind of friend!</a
-        >
-        <a href="#" class="unit-link" data-unit="unit2"
-          >💼 Unit 2: Working 9 to 5</a
-        >
-        <a href="#" class="unit-link" data-unit="unit3"
-          >🤲 Unit 3: Lend a hand.</a
-        >
-        <a href="#" class="unit-link" data-unit="unit4"
-          >❓ Unit 4: What happened?</a
-        >
-        <a href="#" class="unit-link" data-unit="unit5"
-          >🌎 Unit 5: Expanding your horizons</a
-        >
-        <a href="#" class="unit-link" data-unit="unit6"
-          >🔧 Unit 6: That needs fixing.</a
-        >
-        <a href="#" class="unit-link" data-unit="unit7"
-          >🌱 Unit 7: What can we do?</a
-        >
-        <a href="#" class="unit-link" data-unit="unit8"
-          >📚 Unit 8: Never stop learning.</a
-        >
-        <a href="#" class="unit-link" data-unit="unit9"
-          >✅ Unit 9: Getting things done</a
-        >
-        <a href="#" class="unit-link" data-unit="unit10"
-          >⏳ Unit 10: A matter of time</a
-        >
-        <a href="#" class="unit-link" data-unit="unit11"
-          >🎓 Unit 11: Rites of passage</a
-        >
-        <a href="#" class="unit-link" data-unit="unit12"
-          >🏆 Unit 12: Keys to success</a
-        >
-        <a href="#" class="unit-link" data-unit="unit13"
-          >🔮 Unit 13: What might have been</a
-        >
-        <a href="#" class="unit-link" data-unit="unit14"
-          >💡 Unit 14: Creative careers</a
-        >
-        <a href="#" class="unit-link" data-unit="unit15"
-          >⚖️ Unit 15: A law must be passed!</a
-        >
-        <a href="#" class="unit-link" data-unit="unit16"
-          >🎯 Unit 16: Reaching your goals</a
-        >
-      </div>
-    </div>
-
-    <div class="main-container">
-      <div id="unit1" class="unit-container active">
-        <div class="background">
-          <h1>🤝 Unit 1: That's my kind of friend!</h1>
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Jobs → Trabajos 💼</li>
+            <li>Career benefits → Beneficios profesionales 🎁</li>
+            <li>Job skills → Habilidades laborales 🧠</li>
+            <li>Summer jobs → Trabajos de verano ☀️</li>
+          </ul>
         </div>
 
-        <div class="unit-content active">
-          <div class="cond-block first-border">
-            <h2>Vocabulary</h2>
-            <ul>
-              <li>
-                Personality types and qualities → Tipos y cualidades de
-                personalidad 🧠
-              </li>
-              <li>Relationships → Relaciones 🤝</li>
-              <li>Likes and dislikes → Gustos y disgustos ❤️</li>
-            </ul>
-          </div>
-
-          <div class="cond-block second-border">
-            <h2>Speaking</h2>
-            <ul>
-              <li>Describing personalities → Describir personalidades</li>
-              <li>
-                Expressing likes and dislikes → Expresar gustos y disgustos
-              </li>
-              <li>
-                Agreeing and disagreeing → Estar de acuerdo y en desacuerdo
-              </li>
-              <li>Complaining → Quejarse</li>
-            </ul>
-          </div>
-
-          <div class="cond-block third-border">
-            <h2>Grammar</h2>
-            <ul>
-              <li>
-                Relative pronouns as subjects and objects → Pronombres relativos
-                como sujetos y objetos
-              </li>
-              <li>
-                It clauses + adverbial clauses with when → Cláusulas con “it” +
-                cláusulas adverbiales con “when”
-              </li>
-            </ul>
-          </div>
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>
+              Talking about possible careers → Hablar sobre posibles carreras
+            </li>
+            <li>Describing jobs → Describir trabajos</li>
+            <li>Deciding between two jobs → Decidir entre dos trabajos</li>
+          </ul>
         </div>
 
-        <div class="table-responsive">
-          <table>
-            <caption>
-              Relative Pronouns
-            </caption>
-            <thead>
-              <tr>
-                <th>As the Subject of a Clause</th>
-                <th>As the Object of a Clause</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  I like people <span class="highlight">who/that</span> aren't
-                  too serious.
-                </td>
-                <td>
-                  I want someone (<span class="highlight">who/that</span>) I can
-                  have fun with.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  I like people <span class="highlight">who/that</span> have a
-                  good sense of humor.
-                </td>
-                <td>
-                  I'd like someone (<span class="highlight">who/that</span>) I
-                  can talk to easily.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-responsive">
-          <table>
-            <caption>
-              It Clauses + Adverbial Clauses with When
-            </caption>
-            <thead>
-              <tr>
-                <th>It Clauses</th>
-                <th>Adverbial Clauses with When</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>I like <span class="highlight">it</span></td>
-                <td>
-                  <span class="highlight">when</span> my roommate cleans the
-                  apartment.
-                </td>
-              </tr>
-              <tr>
-                <td>I don't mind <span class="highlight">it</span></td>
-                <td>
-                  <span class="highlight">when</span> a friend answers the phone
-                  at the dinner table.
-                </td>
-              </tr>
-              <tr>
-                <td>I can't stand <span class="highlight">it</span></td>
-                <td>
-                  <span class="highlight">when</span> I'm upset and people tell
-                  me to calm down.
-                </td>
-              </tr>
-              <tr>
-                <td><span class="highlight">It</span> makes me happy</td>
-                <td>
-                  <span class="highlight">when</span> people do nice things for
-                  no reason.
-                </td>
-              </tr>
-              <tr>
-                <td><span class="highlight">It</span> bothers me</td>
-                <td>
-                  <span class="highlight">when</span> my doctor arrives late for
-                  an appointment.
-                </td>
-              </tr>
-              <tr>
-                <td><span class="highlight">It</span> upsets me</td>
-                <td>
-                  <span class="highlight">when</span> a close friend forgets my
-                  birthday.
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Gerund phrases as subjects and objects → Frases con gerundio
+              como sujetos y objetos
+            </li>
+            <li>
+              Comparisons with adjectives, nouns, verbs, and past participles
+              → Comparaciones con adjetivos, sustantivos, verbos y participios
+              pasados
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div id="unit2" class="unit-container">
-        <div class="background">
-          <h1>💼 Unit 2: Working 9 to 5</h1>
-        </div>
-        <div class="unit-content">
-          <div class="cond-block first-border">
-            <h2>Vocabulary</h2>
-            <ul>
-              <li>Jobs → Trabajos 💼</li>
-              <li>Career benefits → Beneficios profesionales 🎁</li>
-              <li>Job skills → Habilidades laborales 🧠</li>
-              <li>Summer jobs → Trabajos de verano ☀️</li>
-            </ul>
-          </div>
-
-          <div class="cond-block second-border">
-            <h2>Speaking</h2>
-            <ul>
-              <li>
-                Talking about possible careers → Hablar sobre posibles carreras
-              </li>
-              <li>Describing jobs → Describir trabajos</li>
-              <li>Deciding between two jobs → Decidir entre dos trabajos</li>
-            </ul>
-          </div>
-
-          <div class="cond-block third-border">
-            <h2>Grammar</h2>
-            <ul>
-              <li>
-                Gerund phrases as subjects and objects → Frases con gerundio
-                como sujetos y objetos
-              </li>
-              <li>
-                Comparisons with adjectives, nouns, verbs, and past participles
-                → Comparaciones con adjetivos, sustantivos, verbos y participios
-                pasados
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="table-responsive">
-          <table>
-            <caption>
-              Gerund Phrases
-            </caption>
-            <thead>
-              <tr>
-                <th>Gerund Phrases as Subjects</th>
-                <th>Gerund Phrases as Objects</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <span class="highlight">Playing games all day</span> would be
-                  lots of fun.
-                </td>
-                <td>
-                  She'd be good at <span class="highlight">testing games</span>.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="highlight">Being a flight attendant</span> sounds
-                  exciting.
-                </td>
-                <td>
-                  He'd love
-                  <span class="highlight">being a flight attendant</span>.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="highlight">Designing clothes</span> is not a
-                  man's job.
-                </td>
-                <td>
-                  He wouldn't like
-                  <span class="highlight">being a fashion designer</span>.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="highlight">Working as a veterinarian</span> could
-                  be rewarding.
-                </td>
-                <td>
-                  She'd enjoy
-                  <span class="highlight">working with animals</span>.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-responsive">
-          <table>
-            <caption>
-              Comparisons
-            </caption>
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Expressions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>With adjectives</td>
-                <td>
-                  sounds
-                  <span class="highlight">more/less challenging than</span
-                  ><br />
-                  is <span class="highlight">harder than</span><br />
-                  is <span class="highlight">not as hard as</span>
-                </td>
-              </tr>
-              <tr>
-                <td>With nouns</td>
-                <td>
-                  has <span class="highlight">better/worse hours than</span
-                  ><br />
-                  has <span class="highlight">more education than</span><br />
-                  isn't <span class="highlight">as much work as</span>
-                </td>
-              </tr>
-              <tr>
-                <td>With verbs</td>
-                <td>
-                  earns <span class="highlight">more/less than</span><br />
-                  earns <span class="highlight">as much as</span><br />
-                  doesn't pay <span class="highlight">as much as</span>
-                </td>
-              </tr>
-              <tr>
-                <td>With past participles</td>
-                <td>
-                  is <span class="highlight">better paid than</span><br />
-                  is <span class="highlight">as well paid as</span><br />
-                  isn't <span class="highlight">as well paid as</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Gerund Phrases
+          </caption>
+          <thead>
+            <tr>
+              <th>Gerund Phrases as Subjects</th>
+              <th>Gerund Phrases as Objects</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="highlight">Playing games all day</span> would be
+                lots of fun.
+              </td>
+              <td>
+                She'd be good at <span class="highlight">testing games</span>.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="highlight">Being a flight attendant</span> sounds
+                exciting.
+              </td>
+              <td>
+                He'd love
+                <span class="highlight">being a flight attendant</span>.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="highlight">Designing clothes</span> is not a
+                man's job.
+              </td>
+              <td>
+                He wouldn't like
+                <span class="highlight">being a fashion designer</span>.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="highlight">Working as a veterinarian</span> could
+                be rewarding.
+              </td>
+              <td>
+                She'd enjoy
+                <span class="highlight">working with animals</span>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div id="unit3" class="unit-container">
-        <div class="background">
-          <h1>🤲 Unit 3: Lend a hand.</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit4" class="unit-container">
-        <div class="background">
-          <h1>❓ Unit 4: What happened?</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit5" class="unit-container">
-        <div class="background">
-          <h1>🌎 Unit 5: Expanding your horizons</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit6" class="unit-container">
-        <div class="background">
-          <h1>🔧 Unit 6: That needs fixing.</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit7" class="unit-container">
-        <div class="background">
-          <h1>🌱 Unit 7: What can we do?</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit8" class="unit-container">
-        <div class="background">
-          <h1>📚 Unit 8: Never stop learning.</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit9" class="unit-container">
-        <div class="background">
-          <h1>✅ Unit 9: Getting things done</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit10" class="unit-container">
-        <div class="background">
-          <h1>⏳ Unit 10: A matter of time</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit11" class="unit-container">
-        <div class="background">
-          <h1>🎓 Unit 11: Rites of passage</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit12" class="unit-container">
-        <div class="background">
-          <h1>🏆 Unit 12: Keys to success</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit13" class="unit-container">
-        <div class="background">
-          <h1>🔮 Unit 13: What might have been</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit14" class="unit-container">
-        <div class="background">
-          <h1>💡 Unit 14: Creative careers</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit15" class="unit-container">
-        <div class="background">
-          <h1>⚖️ Unit 15: A law must be passed!</h1>
-        </div>
-        <div class="unit-content"></div>
-      </div>
-
-      <div id="unit16" class="unit-container">
-        <div class="background">
-          <h1>🎯 Unit 16: Reaching your goals</h1>
-        </div>
-        <div class="unit-content"></div>
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Comparisons
+          </caption>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Expressions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>With adjectives</td>
+              <td>
+                sounds
+                <span class="highlight">more/less challenging than</span><br />
+                is <span class="highlight">harder than</span><br />
+                is <span class="highlight">not as hard as</span>
+              </td>
+            </tr>
+            <tr>
+              <td>With nouns</td>
+              <td>
+                has <span class="highlight">better/worse hours than</span><br />
+                has <span class="highlight">more education than</span><br />
+                isn't <span class="highlight">as much work as</span>
+              </td>
+            </tr>
+            <tr>
+              <td>With verbs</td>
+              <td>
+                earns <span class="highlight">more/less than</span><br />
+                earns <span class="highlight">as much as</span><br />
+                doesn't pay <span class="highlight">as much as</span>
+              </td>
+            </tr>
+            <tr>
+              <td>With past participles</td>
+              <td>
+                is <span class="highlight">better paid than</span><br />
+                is <span class="highlight">as well paid as</span><br />
+                isn't <span class="highlight">as well paid as</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </body>
+
+    <div id="unit3" class="unit-container">
+      <div class="background">
+        <h1>🤲 Unit 3: Lend a hand.</h1>
+      </div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Favors → Favores 🤝</li>
+            <li>Formal and informal requests → Solicitudes formales e informales 📩</li>
+            <li>Messages → Mensajes 💬</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>
+              Making direct and indirect requests → Hacer solicitudes directas e
+              indirectas
+            </li>
+            <li>Accepting and declining requests → Aceptar y rechazar solicitudes</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Requests with modals, if clauses, and gerunds → Solicitudes con
+              modales, cláusulas con if y gerundios
+            </li>
+            <li>Indirect requests → Solicitudes indirectas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Requests with modals, if clauses, and gerunds
+          </caption>
+
+          <tbody>
+            <tr>
+              <td rowspan="8" class="formality">
+
+                <div class="vertical-formality">
+
+                  <span class="vertical-formality-label">
+                    Less formal
+                  </span>
+
+                  <div class="vertical-formality-bar"></div>
+
+                  <span class="vertical-formality-label">
+                    More formal
+                  </span>
+
+                </div>
+
+              </td>
+
+              <td>
+                <span class="highlight">Can</span> I borrow your truck, please?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">Could</span> you lend me your truck, please?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">Is it OK if</span> I use your credit card?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">Do you mind if</span> I use your credit card?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">Would it be all right if</span> I used your
+                credit card?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">Would you mind if</span> I borrowed your
+                truck?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">Would you mind</span> helping me on Sunday?
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="highlight">I was wondering if</span> you could help me
+                move.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      ```html
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Indirect Requests
+          </caption>
+
+          <thead>
+            <tr>
+              <th>Direct Requests</th>
+              <th>Indirect Requests</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <strong>Statements</strong><br>
+                Mary, you left your phone in my car.
+              </td>
+              <td>
+                <strong>Indirect requests introduced by that</strong><br>
+                Could you tell Mary
+                <span class="highlight">(that) she left her phone in my car?</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Imperatives</strong><br>
+                Mary, don't forget the students' reports.
+              </td>
+              <td>
+                <strong>Indirect requests using infinitives</strong><br>
+                Can you tell Mary
+                <span class="highlight">not to forget the students' reports?</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Yes/No questions</strong><br>
+                Ms. Martin, have you graded our tests?<br><br>
+                Mary, are you coming to the meeting?
+              </td>
+              <td>
+                <strong>Indirect requests introduced by if or whether</strong><br>
+                Can you ask her
+                <span class="highlight">if she's graded our tests yet?</span><br><br>
+
+                Could you ask her
+                <span class="highlight">whether or not she is coming to the meeting?</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Wh-questions</strong><br>
+                Mary, where are you having lunch?<br><br>
+                Ms. Martin, what time can I talk to you about my homework?
+              </td>
+              <td>
+                <strong>Indirect requests introduced by a question word</strong><br>
+                Can you ask Mary
+                <span class="highlight">where she's having lunch?</span><br><br>
+
+                Would you ask her
+                <span class="highlight">what time I can talk to her about my homework?</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+    <div id="unit4" class="unit-container">
+      <div class="background">
+        <h1>❓ Unit 4: What happened?</h1>
+      </div>
+      <div class="unit-content">
+
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>The media → Los medios de comunicación 📰</li>
+            <li>News stories → Noticias 🗞️</li>
+            <li>Exceptional events → Eventos excepcionales ⭐</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Narrating a story → Narrar una historia</li>
+            <li>
+              Describing events and experiences in the past → Describir eventos y
+              experiencias en el pasado
+            </li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>Past continuous vs. simple past → Pasado continuo vs. pasado simple</li>
+            <li>Past perfect → Pasado perfecto</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <caption>
+            Past Continuous vs. Simple Past
+          </caption>
+
+          <thead>
+            <tr>
+              <th colspan="2">
+                Use the past continuous for an ongoing action in the past.<br>
+                Use the simple past for an event that interrupts that action.
+              </th>
+            </tr>
+            <tr>
+              <th>Past Continuous</th>
+              <th>Simple Past</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                While I <span class="highlight">was working out</span>,
+              </td>
+              <td>
+                it <span class="highlight">calculated</span> how many calories I burned.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                As scientists <span class="highlight">were doing</span> research,
+              </td>
+              <td>
+                they <span class="highlight">discovered</span> that women need more sleep than men.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                A man <span class="highlight">was looking</span> for his cat
+              </td>
+              <td>
+                when he <span class="highlight">found</span> a suspicious package inside a trash can.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<div class="table-responsive">
+  <table>
+    <caption>
+      Past Perfect
+    </caption>
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          Use the past perfect for an event that occurred before another event
+          in the past.
+        </th>
+      </tr>
+
+      <tr>
+        <th>Past Event</th>
+        <th>Past Perfect Event</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          I <span class="highlight">was having</span> lunch with a friend,
+        </td>
+        <td>
+          and I <span class="highlight">had parked</span> my bike on the street.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          When I <span class="highlight">highlight</span>,
+        </td>
+        <td>
+          someone <span class="highlight">had stolen</span> it.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          They <span class="highlight">were able</span> to steal it
+        </td>
+        <td>
+          because I <span class="highlight">had forgotten</span> to lock it up.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    </div>
+
+    <div id="unit5" class="unit-container">
+      <div class="background">
+        <h1>🌎 Unit 5: Expanding your horizons</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Cultural comparisons and culture shock → Comparaciones culturales y choque cultural 🌎</li>
+            <li>Moving abroad → Mudarse al extranjero ✈️</li>
+            <li>Emotions → Emociones 😊</li>
+            <li>Customs → Costumbres 🎎</li>
+            <li>Tourism and travel abroad → Turismo y viajes al extranjero 🧳</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Talking about moving abroad → Hablar sobre mudarse al extranjero</li>
+            <li>Expressing emotions → Expresar emociones</li>
+            <li>Describing cultural expectations → Describir expectativas culturales</li>
+            <li>Giving advice → Dar consejos</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Noun phrases containing relative clauses → Frases nominales que contienen
+              cláusulas relativas
+            </li>
+            <li>
+              Expectations: the custom to, (not) supposed to, expected to, (not) acceptable to → Expectativas: lo
+              acostumbrado a hacer, (no) tener que, se espera que, (no) ser aceptable hacer
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit6" class="unit-container">
+      <div class="background">
+        <h1>🔧 Unit 6: That needs fixing.</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Consumer complaints → Quejas de los consumidores 🗣️</li>
+            <li>Everyday problems → Problemas cotidianos ⚠️</li>
+            <li>Problems with electronics → Problemas con dispositivos electrónicos 💻</li>
+            <li>Repairs → Reparaciones 🔧</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Describing problems → Describir problemas</li>
+            <li>Making complaints → Presentar quejas</li>
+            <li>Explaining something that needs to be done → Explicar algo que debe hacerse</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Describing problems with past participles as adjectives and with nouns
+              → Describir problemas con participios pasados como adjetivos y con
+              sustantivos
+            </li>
+            <li>
+              Describing problems with need + gerund, need + passive infinitive, and keep + gerund → Describir problemas
+              usando “necesitar + gerundio”, “necesitar + infinitivo pasivo” y “seguir + gerundio”
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit7" class="unit-container">
+      <div class="background">
+        <h1>🌱 Unit 7: What can we do?</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>The environment → El medio ambiente 🌱</li>
+            <li>Global challenges → Desafíos globales 🌍</li>
+            <li>Current issues → Problemas actuales 📰</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Identifying and describing problems → Identificar y describir problemas</li>
+            <li>Coming up with solutions → Proponer soluciones</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Passive in the present continuous and present perfect → Voz pasiva en
+              presente continuo y presente perfecto
+            </li>
+            <li>Prepositions of cause → Preposiciones de causa</li>
+            <li>Infinitive clauses and phrases → Cláusulas y frases con infinitivo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit8" class="unit-container">
+      <div class="background">
+        <h1>📚 Unit 8: Never stop learning.</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Education → Educación 🎓</li>
+            <li>Learner choices → Elecciones de los estudiantes 🧑‍🎓</li>
+            <li>Strategies for learning → Estrategias de aprendizaje 📚</li>
+            <li>Life skills → Habilidades para la vida 🌱</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Asking about preferences → Preguntar sobre preferencias</li>
+            <li>Discussing different skills to be learned → Hablar sobre diferentes habilidades que se pueden aprender
+            </li>
+            <li>Talking about learning methods → Hablar sobre métodos de aprendizaje</li>
+            <li>Talking about life skills → Hablar sobre habilidades para la vida</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>Would rather and would prefer → Preferiría y preferiría</li>
+            <li>By + gerund to describe how to do things → By + gerundio para describir cómo hacer algo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit9" class="unit-container">
+      <div class="background">
+        <h1>✅ Unit 9: Getting things done</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Everyday services → Servicios cotidianos 🛠️</li>
+            <li>Recommendations → Recomendaciones 💡</li>
+            <li>Self-improvement → Superación personal 🌱</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Talking about things you need to have done → Hablar sobre cosas que necesitas que te hagan</li>
+            <li>Asking for and giving advice or suggestions → Pedir y dar consejos o sugerencias</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>Get or have something done → Hacer que te hagan algo o encargar que te hagan algo</li>
+            <li>
+              Making suggestions with modals + verbs, gerunds, negative questions,
+              and infinitives → Hacer sugerencias con modales + verbos, gerundios,
+              preguntas negativas e infinitivos
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit10" class="unit-container">
+      <div class="background">
+        <h1>⏳ Unit 10: A matter of time</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Historic events and people → Eventos y personajes históricos 🏛️</li>
+            <li>Biography → Biografía 📖</li>
+            <li>The future → El futuro 🔮</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Talking about historic events → Hablar sobre acontecimientos históricos</li>
+            <li>Talking about things to be accomplished in the future → Hablar sobre cosas que se lograrán en el futuro
+            </li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Referring to time in the past with adverbs and prepositions: during,
+              in, ago, from ... to, for, since → Referirse a momentos del pasado
+              mediante adverbios y preposiciones de tiempo: durante, en, hace,
+              desde ... hasta, durante y desde
+            </li>
+            <li>
+              Predicting the future with will, future continuous, and future perfect
+              → Hacer predicciones sobre el futuro utilizando will, futuro continuo
+              y futuro perfecto
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit11" class="unit-container">
+      <div class="background">
+        <h1>🎓 Unit 11: Rites of passage</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Milestones and turning points → Hitos y momentos decisivos 🏆</li>
+            <li>Behavior and personality → Comportamiento y personalidad 🧠</li>
+            <li>Regrets → Arrepentimientos 💭</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Describing milestones → Describir hitos</li>
+            <li>Describing turning points → Describir momentos decisivos</li>
+            <li>Describing regrets and hypothetical situations → Describir arrepentimientos y situaciones hipotéticas
+            </li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Time clauses: before, after, once, the moment, as soon as, until, by
+              the time → Cláusulas de tiempo: antes de que, después de que, una vez
+              que, en el momento en que, tan pronto como, hasta que, para cuando
+            </li>
+            <li>
+              Expressing regret with should (not) have + past participle → Expresar
+              arrepentimiento con should (not) have + participio pasado
+            </li>
+            <li>
+              Describing hypothetical situations with if clauses + past perfect and
+              would/could have + past participle → Describir situaciones hipotéticas
+              con cláusulas if + pasado perfecto y would/could have + participio
+              pasado
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit12" class="unit-container">
+      <div class="background">
+        <h1>🏆 Unit 12: Keys to success</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Qualities for success → Cualidades para alcanzar el éxito 🏆</li>
+            <li>Successful businesses → Empresas exitosas 🏢</li>
+            <li>Advertising → Publicidad 📢</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Describing qualities for success → Describir cualidades para alcanzar el éxito</li>
+            <li>Giving reasons for success → Dar razones del éxito</li>
+            <li>Interviewing for a job → Entrevistarse para un trabajo</li>
+            <li>Talking about ads and slogans → Hablar sobre anuncios y eslóganes</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Describing purpose with infinitive clauses and infinitive clauses with
+              for → Describir el propósito con cláusulas de infinitivo y cláusulas de
+              infinitivo con for
+            </li>
+            <li>
+              Giving reasons with because, since, because of, for, due to, and the
+              reason → Expresar razones con because, since, because of, for, due to
+              y the reason
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit13" class="unit-container">
+      <div class="background">
+        <h1>🔮 Unit 13: What might have been</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Pet peeves → Cosas que nos molestan 😤</li>
+            <li>Unexplained events → Eventos inexplicables ❓</li>
+            <li>Reactions → Reacciones 😮</li>
+            <li>Complicated situations and advice → Situaciones complicadas y consejos 🧩</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Drawing conclusions → Sacar conclusiones</li>
+            <li>Offering explanations → Ofrecer explicaciones</li>
+            <li>Describing hypothetical events → Describir eventos hipotéticos</li>
+            <li>Giving advice for complicated situations → Dar consejos para situaciones complicadas</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Past modals for degrees of certainty: must (not) have, may (not) have,
+              might (not) have, could (not) have → Modales en pasado para expresar
+              grados de certeza: debe haber ocurrido, no debe haber ocurrido, puede
+              haber ocurrido, puede que no haya ocurrido, podría haber ocurrido y
+              podría no haber ocurrido
+            </li>
+            <li>
+              Past modals for judgments and suggestions: should (not) have, could
+              (not) have, would (not) have → Modales en pasado para expresar juicios
+              y sugerencias: debería haber, no debería haber, podría haber, no podría
+              haber, habría y no habría
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit14" class="unit-container">
+      <div class="background">
+        <h1>💡 Unit 14: Creative careers</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Movies → Películas 🎬</li>
+            <li>Media and entertainment professions → Profesiones de los medios y el entretenimiento 🎭</li>
+            <li>Processes → Procesos ⚙️</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Describing how something is done or made → Describir cómo se hace o se fabrica algo</li>
+            <li>Describing careers in film, TV, publishing, gaming, and music → Describir profesiones en cine,
+              televisión, publicaciones, videojuegos y música</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              The passive to describe process with is/are + past participle and
+              modal + be + past participle → La voz pasiva para describir procesos
+              con is/are + participio pasado y modal + be + participio pasado
+            </li>
+            <li>
+              Defining and non-defining relative clauses → Cláusulas relativas
+              especificativas y explicativas
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit15" class="unit-container">
+      <div class="background">
+        <h1>⚖️ Unit 15: A law must be passed!</h1>
+      </div>
+      <div class="unit-content"></div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Recommendations → Recomendaciones 💡</li>
+            <li>Opinions → Opiniones 💭</li>
+            <li>Community issues → Problemas de la comunidad 🏘️</li>
+            <li>Controversial topics → Temas controvertidos ⚖️</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Giving opinions for and against controversial topics → Dar opiniones a favor y en contra de temas
+              controvertidos</li>
+            <li>Offering a different opinion → Dar una opinión diferente</li>
+            <li>Agreeing and disagreeing → Estar de acuerdo y en desacuerdo</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Giving recommendations and opinions with passive modals: should be,
+              ought to be, must be, has to be, has got to be → Dar recomendaciones y
+              opiniones con modales pasivos: debería ser, debería ser, debe ser,
+              tiene que ser y tiene que ser
+            </li>
+            <li>
+              Tag questions for opinions → Preguntas de confirmación para expresar
+              opiniones
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="unit16" class="unit-container">
+      <div class="background">
+        <h1>🎯 Unit 16: Reaching your goals</h1>
+      </div>
+
+      <div class="unit-content">
+        <div class="cond-block first-border">
+          <h2>Vocabulary</h2>
+          <ul>
+            <li>Challenges → Desafíos 💪</li>
+            <li>Accomplishments → Logros 🏆</li>
+            <li>Goals → Metas 🎯</li>
+            <li>Inspirational sayings → Frases inspiradoras ✨</li>
+          </ul>
+        </div>
+
+        <div class="cond-block second-border">
+          <h2>Speaking</h2>
+          <ul>
+            <li>Giving opinions about inspirational sayings → Dar opiniones sobre frases inspiradoras</li>
+            <li>Talking about the past and the future → Hablar sobre el pasado y el futuro</li>
+          </ul>
+        </div>
+
+        <div class="cond-block third-border">
+          <h2>Grammar</h2>
+          <ul>
+            <li>
+              Accomplishments with the simple past and present perfect →
+              Hablar sobre logros con el pasado simple y el presente perfecto
+            </li>
+            <li>
+              Goals with the future perfect and would like to have + past participle →
+              Hablar sobre metas con el futuro perfecto y would like to have +
+              participio pasado
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</body>
+
 </html>
